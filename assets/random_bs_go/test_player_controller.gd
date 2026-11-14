@@ -5,6 +5,7 @@ extends RigidBody3D
 @export var impulse_needed_to_deform = .5;
 @export var impulse_to_deform_str : Curve;
 @export var sensitivity = 1.0
+@export var sphere_size = .33;
 
 @onready var mesh_instance = $Mesh
 @onready var mesh = mesh_instance.mesh
@@ -75,6 +76,9 @@ func deform(localCoord : Vector3, deform_str : Vector3) :
 	for i in range(mdt.get_vertex_count()):
 		var vert = mdt.get_vertex(i)
 		vert += deform_str * force_falloff.sample(vert.distance_to(localCoord))
+		# force to be sphere, if we want to force to another shape we have to do math about it
+		if(vert.length() < sphere_size):
+			vert = vert.normalized() * sphere_size
 		mdt.set_vertex(i, vert)
 	
 	# fix normals face by face
