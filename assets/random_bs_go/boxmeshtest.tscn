@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cy5ktqnfhaylk"]
+
+[ext_resource type="Shader" uid="uid://wkm87qi5t7ag" path="res://assets/random_bs_go/boxmeshtest.gdshader" id="1_nm71g"]
+[ext_resource type="Script" uid="uid://dsagg3d6c1ti4" path="res://assets/random_bs_go/mesh_instance_3d.gd" id="1_v7qvi"]
+[ext_resource type="PackedScene" uid="uid://d3cllie04uy3m" path="res://assets/random_bs_go/orb.glb" id="3_5ehgo"]
+[ext_resource type="Script" uid="uid://dvg7hamw7d8hx" path="res://assets/random_bs_go/orb.gd" id="4_morl2"]
+
+[sub_resource type="Shader" id="Shader_v7qvi"]
+code = "
+shader_type spatial;
+
+uniform float morph : hint_range(0.0, 1.0) = 0.0;
+uniform float half_size = 0.5;
+
+vec3 cube_to_sphere(vec3 p) {
+	vec3 p2 = p * p;
+	return vec3(
+		p.x * sqrt(1.0 - p2.y * 0.5 - p2.z * 0.5 + p2.y * p2.z / 3.0),
+		p.y * sqrt(1.0 - p2.z * 0.5 - p2.x * 0.5 + p2.z * p2.x / 3.0),
+		p.z * sqrt(1.0 - p2.x * 0.5 - p2.y * 0.5 + p2.x * p2.y / 3.0)
+	);
+}
+
+void vertex() {
+	vec3 unit = VERTEX / half_size;
+	vec3 sphere_pos = cube_to_sphere(unit) * half_size;
+	VERTEX = mix(VERTEX, sphere_pos, morph);
+	NORMAL = normalize(mix(NORMAL, normalize(sphere_pos), morph));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm71g"]
+render_priority = 0
+shader = SubResource("Shader_v7qvi")
+shader_parameter/morph = 0.0
+shader_parameter/half_size = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7qvi"]
+render_priority = 0
+shader = ExtResource("1_nm71g")
+shader_parameter/morph = 0.0
+shader_parameter/half_size = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rj7q"]
+material = SubResource("ShaderMaterial_v7qvi")
+subdivide_width = 24
+subdivide_height = 24
+subdivide_depth = 24
+
+[node name="Boxmeshtest" type="Node3D" unique_id=886188279]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=187023510]
+material_override = SubResource("ShaderMaterial_nm71g")
+mesh = SubResource("BoxMesh_4rj7q")
+script = ExtResource("1_v7qvi")
+
+[node name="orb" parent="." unique_id=2045383582 node_paths=PackedStringArray("mesh_instance") instance=ExtResource("3_5ehgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4446585, 0, 0)
+script = ExtResource("4_morl2")
+mesh_instance = NodePath("Cube")
+
+[editable path="orb"]
