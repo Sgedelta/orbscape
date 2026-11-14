@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bxynf8do7jn2e"]
+
+[ext_resource type="PackedScene" uid="uid://dyoy2r4x0vk15" path="res://assets/Orbscape_Tower.fbx" id="1_noean"]
+[ext_resource type="PackedScene" uid="uid://df0udqejarq7a" path="res://assets/Orbscapetowerflipped.fbx" id="2_e5syo"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a2ios"]
+top_radius = 0.5371094
+bottom_radius = 0.5371094
+
+[node name="Node3D" type="Node3D" unique_id=1442423249]
+
+[node name="Orbscape_Tower" parent="." unique_id=1092514383 instance=ExtResource("1_noean")]
+transform = Transform3D(2.2808883, 0, 0, 0, 1.9875033, 0, 0, 0, 2.4409919, -1.4475174, 1.2862434, -0.5010681)
+
+[node name="Orbscapetowerflipped" parent="." unique_id=217877986 instance=ExtResource("2_e5syo")]
+transform = Transform3D(2.1284187, 0, 0, 0, 2.0018227, 0, 0, 0, 2.2508883, -4.4463186, 0, -4.693037)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1710281564]
+transform = Transform3D(43.636646, 0, 0, 0, 1.2189294, 0, 0, 0, 56.50481, -5.2506638, 75.13512, -4.469569)
+mesh = SubResource("CylinderMesh_a2ios")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1619340273]
+transform = Transform3D(43.636646, 0, 0, 0, 1.2189294, 0, 0, 0, 56.50481, -5.2506638, 40.92274, -4.469569)
+mesh = SubResource("CylinderMesh_a2ios")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1473234535]
+transform = Transform3D(43.636646, 0, 0, 0, 1.2189294, 0, 0, 0, 56.50481, -5.2506638, 1.1533737, -4.469569)
+mesh = SubResource("CylinderMesh_a2ios")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1374809428]
