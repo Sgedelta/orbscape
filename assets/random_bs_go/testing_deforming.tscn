@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bf01a8u61k32i"]
+
+[ext_resource type="Script" uid="uid://bstvd5dehp8po" path="res://assets/random_bs_go/test_player_controller.gd" id="1_p7kt0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bnkmg"]
+size = Vector3(50, 0.2, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnkmg"]
+size = Vector3(50, 0.2, 50)
+
+[sub_resource type="Curve" id="Curve_p7kt0"]
+_data = [Vector2(0, 0.8651686), 0.0, -1.9734423, 0, 0, Vector2(0.55706525, 0), -1.676284, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_leiga"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.05), 0.050000004, 0.008904108, 1, 1, Vector2(10, 0.13013697), 0.008904108, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4xiot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_27m30"]
+
+[node name="Node3D" type="Node3D" unique_id=1809632497]
+transform = Transform3D(1, 0, 0, 0, 0.99232864, -0.12362807, 0, 0.12362807, 0.99232864, 0, -15.769821, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1116545049]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1531036910]
+mesh = SubResource("BoxMesh_bnkmg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=330389131]
+shape = SubResource("BoxShape3D_bnkmg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=797541067]
+transform = Transform3D(1, 0, 0, 0, 0.18595408, 0.9825584, 0, -0.9825584, 0.18595408, 0, 4.8738756, 0)
+light_color = Color(0.7882353, 0.8509804, 1, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1839258820]
+transform = Transform3D(0.37211138, -0.85793644, 0.35422915, 0.36870316, 0.4868599, 0.7918497, -0.85181653, -0.16405079, 0.49748984, 3.3350372, 4.8738756, -3.0565524)
+light_color = Color(0.9441231, 0.5932466, 0, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=694958278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7584233, 0)
+inertia = Vector3(1, 1, 1)
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1_p7kt0")
+subdivisions = 15
+force_falloff = SubResource("Curve_p7kt0")
+impulse_to_deform_str = SubResource("Curve_leiga")
+sensitivity = 10.0
+
+[node name="Mesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1424761749]
+mesh = SubResource("ArrayMesh_4xiot")
+
+[node name="Collider" type="CollisionShape3D" parent="RigidBody3D" unique_id=521172266]
+
+[node name="Camera3D" type="Camera3D" parent="RigidBody3D" unique_id=790170099]
+transform = Transform3D(1, 0, 0, 0, 0.9841072, 0.17757529, 0, -0.17757529, 0.9841072, 0, 0.5988345, 3.4073458)
+
+[node name="Non-DeformMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1960673613]
+visible = false
+mesh = SubResource("BoxMesh_27m30")
