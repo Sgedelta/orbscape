@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bf01a8u61k32i"]
 
 [ext_resource type="Script" uid="uid://bstvd5dehp8po" path="res://assets/random_bs_go/test_player_controller.gd" id="1_p7kt0"]
+[ext_resource type="Script" uid="uid://t5ifmm1isyjj" path="res://assets/random_bs_go/camera_controller.gd" id="2_leiga"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bnkmg"]
 size = Vector3(50, 0.2, 50)
@@ -143,6 +144,9 @@ update_scale = false
 
 [node name="CameraController" type="Node3D" parent="." unique_id=126044423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7584229, 0)
+script = ExtResource("2_leiga")
 
-[node name="Camera3D" type="Camera3D" parent="CameraController" unique_id=2139276475]
-transform = Transform3D(1, 0, 0, 0, 0.9841072, 0.17757529, 0, -0.17757529, 0.9841072, 0, 0.5988345, 3.4073458)
+[node name="SpringArm" type="SpringArm3D" parent="CameraController" unique_id=2059529842]
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm" unique_id=2139276475]
