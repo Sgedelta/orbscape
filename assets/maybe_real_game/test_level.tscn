@@ -1,33 +1,17 @@
 [gd_scene format=3 uid="uid://ci4dsy07s7262"]
 
-[ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_giiw4"]
-[ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="1_kksgc"]
-[ext_resource type="Texture2D" uid="uid://c4kmuust047b" path="res://assets/random_bs_go/david.png" id="2_p3nou"]
+[ext_resource type="Script" uid="uid://c5jxt62yra0ox" path="res://assets/maybe_real_game/camera_3d.gd" id="2_giiw4"]
 [ext_resource type="PackedScene" uid="uid://dyoy2r4x0vk15" path="res://assets/Orbscape_Tower.fbx" id="3_koadj"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_giiw4"]
-size = Vector3(50, 0.2, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_koadj"]
 size = Vector3(50, 0.2, 50)
 
+[sub_resource type="Curve3D" id="Curve3D_giiw4"]
+
 [node name="TestLevel" type="Node3D" unique_id=5879746]
-
-[node name="RigidBody3D" parent="." unique_id=255405108 node_paths=PackedStringArray("camera_controller") instance=ExtResource("1_giiw4")]
-camera_controller = NodePath("../CameraController")
-sphere_size = 0.45
-dent_str_scalar = 1.0
-ball_texture = ExtResource("2_p3nou")
-
-[node name="CameraController" parent="." unique_id=287330889 node_paths=PackedStringArray("target") instance=ExtResource("1_kksgc")]
-transform = Transform3D(1, 0, 0, 0, 0.91744834, 0.3978549, 0, -0.3978549, 0.91744834, 0, 0, 0)
-target = NodePath("../RigidBody3D")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=779292002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6473103, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1859082980]
-mesh = SubResource("BoxMesh_giiw4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1886932532]
 shape = SubResource("BoxShape3D_koadj")
@@ -38,4 +22,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1365929, -2.547308, -17.170
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1054873557]
 transform = Transform3D(1, 0, 0, 0, 0.19175963, 0.9814419, 0, -0.9814419, 0.19175963, 0, 9.497283, 0)
 
-[editable path="RigidBody3D"]
+[node name="window+marker" type="Node3D" parent="." unique_id=162931347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4178493, 55.46158, -15.810152)
+
+[node name="Path3D" type="Path3D" parent="." unique_id=357270880 node_paths=PackedStringArray("window", "follower", "camera")]
+transform = Transform3D(1, 0, 0, 0, 0.9063078, -0.42261833, 0, 0.42261833, 0.9063078, 0, 0, 0)
+curve = SubResource("Curve3D_giiw4")
+script = ExtResource("2_giiw4")
+window = NodePath("../window+marker")
+follower = NodePath("PathFollow3D")
+camera = NodePath("PathFollow3D/Camera3D")
+duration = 10.0
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1129853430]
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D" unique_id=521652532]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
