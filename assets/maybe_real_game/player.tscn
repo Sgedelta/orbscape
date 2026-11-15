@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://boxfuc4fv5cse"]
+
+[ext_resource type="Script" uid="uid://bstvd5dehp8po" path="res://assets/random_bs_go/test_player_controller.gd" id="1_x1hrb"]
+
+[sub_resource type="Curve" id="Curve_51tfg"]
+_data = [Vector2(0, 1), 0.0, -1.3333333, 0, 1, Vector2(0.75, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_leiga"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.075, 0, 1, Vector2(1, 0.075), 0.075, 0.008333334, 1, 1, Vector2(10, 0.15), 0.008333334, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4xiot"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_27m30"]
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=255405108]
+inertia = Vector3(1, 1, 1)
+contact_monitor = true
+max_contacts_reported = 8
+script = ExtResource("1_x1hrb")
+subdivisions = 15
+force_falloff = SubResource("Curve_51tfg")
+impulse_to_deform_str = SubResource("Curve_leiga")
+dent_str_scalar = 0.75
+sensitivity = 10.0
+jump_count = 2
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1919516154]
+layers = 2
+mesh = SubResource("ArrayMesh_4xiot")
+
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=1905257307]
+
+[node name="EngineMesh" type="MeshInstance3D" parent="." unique_id=985425272]
+layers = 2
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1224316707]
+remote_path = NodePath("../../CameraController")
+update_rotation = false
+update_scale = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1708362626]

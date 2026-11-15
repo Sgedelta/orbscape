@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bf01a8u61k32i"]
 
-[ext_resource type="Script" uid="uid://bstvd5dehp8po" path="res://assets/random_bs_go/test_player_controller.gd" id="1_p7kt0"]
-[ext_resource type="Script" uid="uid://j3ernkib7hnm" path="res://assets/random_bs_go/camera.gd" id="2_leiga"]
+[ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_leiga"]
+[ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="2_yetgv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_bnkmg"]
 size = Vector3(50, 0.2, 50)
@@ -12,19 +12,6 @@ size = Vector3(50, 0.2, 50)
 [sub_resource type="BoxMesh" id="BoxMesh_4xiot"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p7kt0"]
-
-[sub_resource type="Curve" id="Curve_51tfg"]
-_data = [Vector2(0, 1), 0.0, -1.3333333, 0, 1, Vector2(0.75, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_leiga"]
-_limits = [0.0, 1.0, 0.0, 10.0]
-_data = [Vector2(0, 0), 0.0, 0.075, 0, 1, Vector2(1, 0.075), 0.075, 0.008333334, 1, 1, Vector2(10, 0.15), 0.008333334, 0.0, 1, 0]
-point_count = 3
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_4xiot"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_27m30"]
 
 [node name="Node3D" type="Node3D" unique_id=1809632497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.769821, 0)
@@ -117,39 +104,8 @@ light_color = Color(0.7882353, 0.8509804, 1, 1)
 transform = Transform3D(0.37211138, -0.85793644, 0.35422915, 0.36870316, 0.4868599, 0.7918497, -0.85181653, -0.16405079, 0.49748984, 3.3350372, 4.8738756, -3.0565524)
 light_color = Color(0.9441231, 0.5932466, 0, 1)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=694958278 node_paths=PackedStringArray("camera_controller")]
+[node name="RigidBody3D" parent="." unique_id=255405108 instance=ExtResource("1_leiga")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7584233, 0)
-inertia = Vector3(1, 1, 1)
-contact_monitor = true
-max_contacts_reported = 8
-script = ExtResource("1_p7kt0")
-camera_controller = NodePath("../CameraController")
-subdivisions = 15
-force_falloff = SubResource("Curve_51tfg")
-impulse_to_deform_str = SubResource("Curve_leiga")
-dent_str_scalar = 0.75
-sensitivity = 10.0
-jump_count = 2
 
-[node name="Mesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1424761749]
-mesh = SubResource("ArrayMesh_4xiot")
-
-[node name="Collider" type="CollisionShape3D" parent="RigidBody3D" unique_id=521172266]
-
-[node name="EngineMesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1960673613]
-mesh = SubResource("BoxMesh_27m30")
-
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="RigidBody3D" unique_id=459120901]
-remote_path = NodePath("../../CameraController")
-update_rotation = false
-update_scale = false
-
-[node name="CameraController" type="Node3D" parent="." unique_id=126044423 node_paths=PackedStringArray("target")]
+[node name="CameraController" parent="." unique_id=287330889 instance=ExtResource("2_yetgv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7584229, 0)
-script = ExtResource("2_leiga")
-target = NodePath("../RigidBody3D")
-
-[node name="SpringArm" type="SpringArm3D" parent="CameraController" unique_id=2059529842]
-spring_length = 4.0
-
-[node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm" unique_id=2139276475]

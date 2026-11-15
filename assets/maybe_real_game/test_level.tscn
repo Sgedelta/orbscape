@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ci4dsy07s7262"]
+
+[ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_giiw4"]
+[ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="1_kksgc"]
+[ext_resource type="PackedScene" uid="uid://dyoy2r4x0vk15" path="res://assets/Orbscape_Tower.fbx" id="3_koadj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_giiw4"]
+size = Vector3(50, 0.2, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_koadj"]
+size = Vector3(50, 0.2, 50)
+
+[node name="TestLevel" type="Node3D" unique_id=5879746]
+
+[node name="RigidBody3D" parent="." unique_id=255405108 node_paths=PackedStringArray("camera_controller") instance=ExtResource("1_giiw4")]
+camera_controller = NodePath("../CameraController")
+
+[node name="CameraController" parent="." unique_id=287330889 node_paths=PackedStringArray("target") instance=ExtResource("1_kksgc")]
+transform = Transform3D(1, 0, 0, 0, 0.91744834, 0.3978549, 0, -0.3978549, 0.91744834, 0, 0, 0)
+target = NodePath("../RigidBody3D")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=779292002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6473103, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1859082980]
+mesh = SubResource("BoxMesh_giiw4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1886932532]
+shape = SubResource("BoxShape3D_koadj")
+
+[node name="Orbscape_Tower" parent="." unique_id=574919772 instance=ExtResource("3_koadj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1365929, -2.547308, -17.17052)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1054873557]
+transform = Transform3D(1, 0, 0, 0, 0.19175963, 0.9814419, 0, -0.9814419, 0.19175963, 0, 9.497283, 0)
+
+[editable path="RigidBody3D"]
