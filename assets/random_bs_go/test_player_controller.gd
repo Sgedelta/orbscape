@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+@export var camera_controller : Node3D;
 @export var subdivisions : int = 7;
 @export var force_falloff : Curve;
 @export var impulse_needed_to_deform = .5;
@@ -7,6 +8,7 @@ extends RigidBody3D
 @export var sensitivity = 1.0
 @export var sphere_size = .33;
 @export var dent_str_scalar = 1.0;
+
 
 var max_impulse = .15;
 var min_impulse = .01;
@@ -33,7 +35,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	apply_torque( Vector3(-1, 0, 0) * accumulated_force)
+	var fwd := -camera_controller.global_basis.z
+	var axis := Vector3.UP.cross(fwd)
+	
+	apply_torque( axis * accumulated_force)
 	
 	accumulated_force = 0
 
