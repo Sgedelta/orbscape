@@ -1,0 +1,701 @@
+[gd_scene format=3 uid="uid://txdpuwhoj7ag"]
+
+[ext_resource type="PackedScene" uid="uid://c2vjq323unor0" path="res://assets/maybe_real_game/level1/level_one.tscn" id="1_ofbpu"]
+[ext_resource type="PackedScene" uid="uid://cw0ja044o6y0c" path="res://assets/maybe_real_game/pieces/spiral_staircase.tscn" id="2_1dani"]
+[ext_resource type="Script" uid="uid://dqq5ay35pfepp" path="res://assets/maybe_real_game/spinny.gd" id="2_eqirj"]
+[ext_resource type="PackedScene" uid="uid://b0o8xesv64481" path="res://assets/maybe_real_game/pieces/wipeout_slammer.tscn" id="2_ojdvh"]
+[ext_resource type="PackedScene" uid="uid://dqwykaxnct045" path="res://assets/maybe_real_game/pieces/Slide.tscn" id="5_p0xdo"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ojdvh"]
+points = PackedVector3Array(-0.033144746, 0.060105417, -0.037699997, -0.048816666, 0.2629054, -0.031211294, 0.041716278, 0.25553387, -0.033337843, 0.044969052, 0.050366044, 0.05006721, -0.048816666, 0.050366044, 0.043808095, 0.041716278, 0.057737555, -0.033337843, 0.044969052, 0.2629054, 0.05006721, -0.048816666, 0.2629054, 0.043808095, -0.048816666, 0.050366044, -0.031211294, -0.01753946, 0.18162198, 0.08758333, 0.019952795, 0.2003877, 0.08758333, 0.03489075, 0.2529214, -0.037548874, -0.033144746, 0.25316602, -0.037699997, -0.01753946, 0.20662907, 0.08758333, 0.03489075, 0.06035004, -0.037548874, -0.01128769, 0.17538062, 0.08758333, 0.0074492563, 0.17538062, 0.08758333, 0.019952795, 0.18788417, 0.08758333)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_eqirj"]
+points = PackedVector3Array(0.0012023896, -0.0028, 0.073008314, -0.021024214, -0.0028, -0.060403544, -0.032150574, -0.0028, -0.05484036, -0.03895435, 0.048030574, 0.046445645, 0.04130207, 0.048002545, -0.03381076, 0.06370172, 0.0065828525, 0.05004457, 0.0567689, -0.0028, -0.0326007, -0.0675689, 0.01284013, -0.031211898, 0.040149998, 0.047261585, 0.045249995, -0.06550354, -0.0028, 0.028515931, -0.03180263, 0.046963617, -0.037699997, 0.044944573, 0.01284013, -0.056211628, 0.06997368, 0.01284013, -0.02495462, -0.042554483, 0.01284013, 0.068801716, -0.07382618, 0.0065828525, 0.031287428, 0.06790832, -0.0028, 0.017402628, -0.042161852, 0.046604663, -0.03163655, -0.055069037, 0.0065828525, -0.04996904, 0.017352574, 0.019521369, 0.0656084, -0.06550354, -0.0028, -0.015924217, 0.05120185, 0.01284013, 0.062544435, -0.009600824, 0.014112245, -0.058542285, 0.017852753, -0.0028, -0.060403544, 0.040092416, -0.0028, 0.0618689, -0.037700698, -0.0028, 0.0618689, 0.012045536, 0.024922265, -0.053424213, -0.042799998, 0.046963617, 0.039294485, -0.0675689, 0.0065828525, 0.043801982, 0.034194484, 0.046963617, -0.037699997, 0.06370172, 0.01284013, -0.037454486, 0.0012023896, 0.008491317, 0.07216943, -0.014736842, 0.03017643, 0.05941236)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1dani"]
+points = PackedVector3Array(-0.048816666, 0.20039135, 0.3126654, 0.019952795, 0.1879074, 0.08758333, -0.01753946, 0.23791665, 0.10634415, -0.023791227, 0.15040046, 0.10634415, 0.0074492563, 0.14414012, 0.318919, 0.044969052, 0.16915393, 0.11887523, 0.019952795, 0.23791665, 0.3251726, 0.038708102, 0.22539598, 0.112597756, -0.048816666, 0.20039135, 0.11887523, -0.036294766, 0.16290277, 0.3314262, -0.030042997, 0.23164713, 0.3251726, 0.026204564, 0.15040046, 0.112597756, 0.038708102, 0.16290277, 0.3251726, -0.042546537, 0.16915393, 0.10634415, 0.044969052, 0.21289366, 0.3251726, -0.036294766, 0.22539598, 0.10634415, 0.019952795, 0.23791665, 0.112597756, -0.036294766, 0.15665162, 0.318919, -0.01128769, 0.21289366, 0.08758333, -0.023791227, 0.23791665, 0.3126654, 0.0074492563, 0.14414012, 0.11887523, -0.042546537, 0.21914482, 0.3251726, 0.013701025, 0.23791665, 0.3314262, 0.044969052, 0.16915393, 0.318919, -0.048816666, 0.1879074, 0.318919, -0.005035921, 0.14414012, 0.318919, -0.01128769, 0.17540509, 0.08758333, 0.03244715, 0.23164713, 0.3251726, 0.026204564, 0.15040046, 0.3251726, 0.013701025, 0.21289366, 0.08758333, -0.042546537, 0.21289366, 0.3314262, -0.036294766, 0.15665162, 0.11887523)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_27m30"]
+top_radius = 1.725
+bottom_radius = 0.154
+height = 3.0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p0xdo"]
+points = PackedVector3Array(-1.2846138, 1.1914885, -0.88931036, 1.6843754, 1.4799154, 0.3156006, 1.6296009, 1.4780982, 0.52568185, 0.20050858, -1.3990058, 0.049990833, -0.78499776, 1.4708668, 1.517779, 0.52552664, 1.4779365, -1.6295666, -1.6837215, 1.4786353, 0.31544998, 0.525528, 1.4779403, 1.6295707, -0.20062752, -1.3987885, -0.049983103, 1.455836, 1.4620961, -0.883879, -0.5254817, 1.4768146, -1.6289622, 0.049910378, -1.3989121, -0.20057876, -0.05005845, -1.3988588, 0.20057116, -1.3481921, 1.4573599, 1.0369575, 1.0372595, 1.4585181, 1.3487225, -1.6291922, 1.477315, -0.5256079, 0.21351783, 1.5, 1.7074785, 1.6843765, 1.4799163, -0.3156008, 1.0372694, 1.4585319, -1.3487352, -1.0369834, 1.4573531, -1.3481684, -0.31582263, 1.4785492, 1.6836201, 1.3486533, 1.4585866, 1.0374277, -0.100428894, 0.70854115, -1.3056005, 0.14910436, -1.239071, 0.24905899, -0.1492421, -1.2389691, -0.2490386, 0.24898174, -1.2391127, -0.14919072, -0.14945431, -1.3905802, 0.14938574, -1.5659249, 1.4671385, 0.6786294, -1.6032876, 1.3083271, -0.25047344, 0.31578124, 1.4796324, -1.684199, -1.0389599, 1.2923917, 1.237042, 1.2369952, 1.2927474, -1.0393075)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cx3vu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27m30"]
+size = Vector3(1, 0.38427734, 0.5292969)
+
+[sub_resource type="BoxMesh" id="BoxMesh_27m30"]
+size = Vector3(1.8438721, 0.36328125, 0.5029297)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1dani"]
+size = Vector3(1.8438721, 0.36328125, 0.5029297)
+
+[node name="GameTower" type="Node3D" unique_id=581105494]
+
+[node name="LevelOne" parent="." unique_id=164788576 instance=ExtResource("1_ofbpu")]
+
+[node name="Level2" type="Node3D" parent="." unique_id=104528557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.152862, 0)
+
+[node name="WallsAndFloor" type="CSGCombiner3D" parent="Level2" unique_id=745431767]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level2/WallsAndFloor" unique_id=178312553]
+radius = 20.0
+height = 12.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level2/WallsAndFloor" unique_id=867084653]
+operation = 2
+radius = 19.0
+height = 10.0
+sides = 64
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level2/WallsAndFloor" unique_id=87129755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.894531, 6.003831, -1.0699437)
+operation = 2
+radius = 3.310461
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level2/WallsAndFloor" unique_id=307213277]
+transform = Transform3D(0.85936904, 0.9414537, 0, -0.51135564, 1.582179, 0, 0, 0, 1, -18.203337, -5.547059, -0.7302246)
+operation = 2
+size = Vector3(1.5297852, 1, 2.4604492)
+
+[node name="Overhead" type="OmniLight3D" parent="Level2" unique_id=797198576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.857551, 0)
+shadow_enabled = true
+omni_range = 30.0
+omni_attenuation = 0.4
+
+[node name="Level3" type="Node3D" parent="." unique_id=874359485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.992306, 0)
+
+[node name="WallsAndFloor" type="CSGCombiner3D" parent="Level3" unique_id=189434850]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level3/WallsAndFloor" unique_id=1343554571]
+radius = 20.0
+height = 12.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level3/WallsAndFloor" unique_id=1234988647]
+operation = 2
+radius = 19.0
+height = 10.0
+sides = 64
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=292891521]
+transform = Transform3D(0.9044928, -0.78520536, 0, 0.42648858, 1.665256, 0, 0, 0, 1, -18.187449, 5.4765663, -0.7302246)
+operation = 2
+size = Vector3(1.5297852, 1, 2.4604492)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=374403119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.37493, -3.450714, 1.1688614)
+size = Vector3(6.391693, 4.006836, 32.762344)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=113536451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.517519, -1.9402771, 2.0134807)
+size = Vector3(2.866623, 0.9859619, 1.9940529)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=1632647849]
+transform = Transform3D(1, 0, 0, 0, 0.93316364, -0.35945225, 0, 0.35945225, 0.93316364, -12.534407, -3.3915577, 7.5599256)
+size = Vector3(2.8328476, 0.36883545, 9.945188)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=192006545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8778777, -3.450714, 1.956049)
+size = Vector3(8.398483, 4.006836, 45.67789)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=981990046]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.714411, -3.450714, -5.5008526)
+size = Vector3(3.665062, 4.006836, 11.008289)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=432422724]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.622127, -3.450714, 1.8717575)
+size = Vector3(18.410282, 4.006836, 3.273436)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=464859922]
+transform = Transform3D(1, 0, 0, 0, 0.93779546, -0.34718817, 0, 0.34718817, 0.93779546, 12.02903, -2.8878784, -13.283279)
+size = Vector3(4.8120346, 0.7838135, 14.684854)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level3/WallsAndFloor" unique_id=379380479]
+transform = Transform3D(0.9961182, 0, -0.08802622, 0, 1, 0, 0.08802622, 0, 0.9961182, 14.597532, -5.209568, 5.666119)
+operation = 2
+radius = 3.310461
+
+[node name="Overhead" type="OmniLight3D" parent="Level3" unique_id=929377002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.857551, 0)
+shadow_enabled = true
+omni_range = 30.0
+omni_attenuation = 0.4
+
+[node name="SpiralStaircase" parent="Level3" unique_id=1754790079 instance=ExtResource("2_1dani")]
+transform = Transform3D(4.1540194, 0, -4.329448, 0, 6.000001, 0, 4.329448, 0, 4.1540194, 28.724586, -16.872837, 6.3654046)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level3" unique_id=73078331]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.436258, -4.0497017, -10.4876995)
+script = ExtResource("2_eqirj")
+speed = 1.7174039839624198
+
+[node name="WipeoutSlammer" parent="Level3/StaticBody3D" unique_id=1566824358 instance=ExtResource("2_ojdvh")]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Level3/StaticBody3D" unique_id=1476574386]
+transform = Transform3D(23.342478, 0, 0, 0, 23.342478, -1.0203322e-06, 0, 1.0203322e-06, 23.342478, 0, -1.0102122, -0.11965695)
+shape = SubResource("ConvexPolygonShape3D_ojdvh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Level3/StaticBody3D" unique_id=373407226]
+transform = Transform3D(23.342478, 0, 0, 0, 23.342478, -1.0203322e-06, 0, 1.0203322e-06, 23.342478, 0, -1.0102122, -0.11965695)
+shape = SubResource("ConvexPolygonShape3D_eqirj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level3/StaticBody3D" unique_id=563033847]
+transform = Transform3D(23.342478, 0, 0, 0, 23.342478, -1.0203322e-06, 0, 1.0203322e-06, 23.342478, 0, -1.0102122, -0.11965695)
+shape = SubResource("ConvexPolygonShape3D_1dani")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Level3" unique_id=2090477231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.89056385, -2.1424046, 9.119085)
+constant_angular_velocity = Vector3(0, 1.5707964, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level3/StaticBody3D2" unique_id=101413822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0418739, 0)
+mesh = SubResource("CylinderMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level3/StaticBody3D2" unique_id=662723978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0006886, 0)
+shape = SubResource("ConvexPolygonShape3D_p0xdo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Level3/StaticBody3D2" unique_id=1210853047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0058537, 0)
+mesh = SubResource("CylinderMesh_cx3vu")
+
+[node name="Level4" type="Node3D" parent="." unique_id=281384098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.41616, 0)
+
+[node name="WallsAndFloor" type="CSGCombiner3D" parent="Level4" unique_id=320647421]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level4/WallsAndFloor" unique_id=1810240655]
+radius = 20.0
+height = 12.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Level4/WallsAndFloor" unique_id=1842583170]
+operation = 2
+radius = 19.0
+height = 10.0
+sides = 64
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Level4/WallsAndFloor" unique_id=1493797318]
+transform = Transform3D(0.9961182, 0, -0.08802622, 0, 1, 0, 0.08802622, 0, 0.9961182, 14.597532, 6.5800266, 5.666119)
+operation = 2
+radius = 3.310461
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level4/WallsAndFloor" unique_id=1345238773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7069716, -3.575386, 10.9024)
+size = Vector3(1, 3.7823486, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Level4/WallsAndFloor" unique_id=681264027]
+transform = Transform3D(0.9864434, 0.16410188, 0, -0.16410188, 0.9864434, 0, 0, 0, 1, 0.54364157, -0.8957176, 10.943782)
+size = Vector3(15.32666, 0.13934326, 0.4880371)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Level4/WallsAndFloor" unique_id=2138657000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.366592, -2.5478287, 10.9024)
+size = Vector3(1, 5.8374634, 1)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Level4/WallsAndFloor" unique_id=416795663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6797633, -2.627739, -22.351894)
+size = Vector3(40.881714, 5.677643, 28.194336)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level4/WallsAndFloor" unique_id=2126741807]
+transform = Transform3D(0.57610834, -0.81737334, 0, 0.81737334, 0.57610834, 0, 0, 0, 1, 10.790452, -3.5867805, 10.9024)
+size = Vector3(0.14465332, 6.348011, 1)
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level4/WallsAndFloor" unique_id=1056031090]
+transform = Transform3D(0.043888133, -0.62035674, -0.78309083, 0, 0.78384626, -0.6209551, 0.99903655, 0.027252562, 0.034401547, 0, -3.6584778, -15.506856)
+operation = 2
+height = 16.852417
+sides = 32
+
+[node name="Overhead" type="OmniLight3D" parent="Level4" unique_id=860705988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.857551, 0)
+shadow_enabled = true
+omni_range = 30.0
+omni_attenuation = 0.4
+
+[node name="Node3D" type="Node3D" parent="Level4" unique_id=1313231837]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level4/Node3D" unique_id=1731108360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3806133, 0.34161377, 10.362441)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/StaticBody3D" unique_id=582162310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30786133, 0.23535156)
+shape = SubResource("BoxShape3D_27m30")
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/StaticBody3D" unique_id=2062165518]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.0041894913)
+node_a = NodePath("..")
+node_b = NodePath("../../Step2")
+angular_limit/enable = true
+angular_limit/relaxation = 0.1
+
+[node name="Step" type="RigidBody3D" parent="Level4/Node3D" unique_id=1283423449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 10.111264)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step" unique_id=361458754]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step2")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step" unique_id=472378466]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step" unique_id=1463316732]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step2" type="RigidBody3D" parent="Level4/Node3D" unique_id=1661922419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 9.561603)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step2" unique_id=333576339]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step3")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step2" unique_id=1678746086]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step2" unique_id=1676580174]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step3" type="RigidBody3D" parent="Level4/Node3D" unique_id=1448795389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 8.974182)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step3" unique_id=102246837]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step4")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step3" unique_id=1679709215]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step3" unique_id=61952373]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step4" type="RigidBody3D" parent="Level4/Node3D" unique_id=1471113026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 8.392906)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step4" unique_id=894249635]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step5")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step4" unique_id=866322045]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step4" unique_id=61832153]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step5" type="RigidBody3D" parent="Level4/Node3D" unique_id=1616792913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 7.8343353)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step5" unique_id=955427134]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step6")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step5" unique_id=1039538708]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step5" unique_id=493268660]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step6" type="RigidBody3D" parent="Level4/Node3D" unique_id=1369558303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 7.2246695)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step6" unique_id=1598857582]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step7")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step6" unique_id=1370235819]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step6" unique_id=1618178934]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step7" type="RigidBody3D" parent="Level4/Node3D" unique_id=384133491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 6.580552)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step7" unique_id=276173898]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step8")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step7" unique_id=13063722]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step7" unique_id=1457226305]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step8" type="RigidBody3D" parent="Level4/Node3D" unique_id=1763812955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 5.9256277)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step8" unique_id=698199583]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step9")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step8" unique_id=241696080]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step8" unique_id=1535832237]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step9" type="RigidBody3D" parent="Level4/Node3D" unique_id=1684691454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 5.245744)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step9" unique_id=770220535]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step10")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step9" unique_id=443749995]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step9" unique_id=1191158725]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step10" type="RigidBody3D" parent="Level4/Node3D" unique_id=1181629570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 4.5634074)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step10" unique_id=1290717631]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step11")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step10" unique_id=1783826872]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step10" unique_id=1376152423]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step11" type="RigidBody3D" parent="Level4/Node3D" unique_id=1443644813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 3.7708764)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step11" unique_id=985422526]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step12")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step11" unique_id=888172478]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step11" unique_id=7299460]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step12" type="RigidBody3D" parent="Level4/Node3D" unique_id=1590580447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 3.0286798)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step12" unique_id=995752154]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step13")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step12" unique_id=1278063775]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step12" unique_id=921499736]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step13" type="RigidBody3D" parent="Level4/Node3D" unique_id=691292652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 3.0286798)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step13" unique_id=1641617505]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step14")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step13" unique_id=889521693]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step13" unique_id=1118550133]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step14" type="RigidBody3D" parent="Level4/Node3D" unique_id=1156007828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 2.3626952)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step14" unique_id=1904872953]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step15")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step14" unique_id=1147232081]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step14" unique_id=484457050]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step15" type="RigidBody3D" parent="Level4/Node3D" unique_id=1379791505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 1.698103)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step15" unique_id=1937572995]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step16")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step15" unique_id=1237683432]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step15" unique_id=1232603919]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step16" type="RigidBody3D" parent="Level4/Node3D" unique_id=1932701484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 1.0720487)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step16" unique_id=1007917253]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step17")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step16" unique_id=1848877108]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step16" unique_id=1353358234]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step17" type="RigidBody3D" parent="Level4/Node3D" unique_id=465926434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, 0.36146736)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step17" unique_id=1916360154]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step18")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step17" unique_id=1106868535]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step17" unique_id=1671604100]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step18" type="RigidBody3D" parent="Level4/Node3D" unique_id=433990338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -0.31154227)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step18" unique_id=400809479]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step19")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step18" unique_id=1595183495]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step18" unique_id=1343387774]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step19" type="RigidBody3D" parent="Level4/Node3D" unique_id=301293521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -1.0172542)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step19" unique_id=1375289173]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step20")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step19" unique_id=1543094142]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step19" unique_id=941779376]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step20" type="RigidBody3D" parent="Level4/Node3D" unique_id=658608237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -1.7031287)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step20" unique_id=48882951]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step21")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step20" unique_id=716357312]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step20" unique_id=1857405926]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step21" type="RigidBody3D" parent="Level4/Node3D" unique_id=116015715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -2.3792398)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step21" unique_id=1369852283]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step22")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step21" unique_id=116692517]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step21" unique_id=1875568123]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step22" type="RigidBody3D" parent="Level4/Node3D" unique_id=1479556459]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -3.0579736)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step22" unique_id=2082452175]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step23")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step22" unique_id=248750852]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step22" unique_id=1812639671]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step23" type="RigidBody3D" parent="Level4/Node3D" unique_id=1915992247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -3.6404724)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step23" unique_id=787190571]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step24")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step23" unique_id=1085038769]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step23" unique_id=1909826242]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step24" type="RigidBody3D" parent="Level4/Node3D" unique_id=361935295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -4.3415704)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step24" unique_id=488774505]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step25")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step24" unique_id=1471805308]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step24" unique_id=1276102455]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step25" type="RigidBody3D" parent="Level4/Node3D" unique_id=1828987731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -5.1119304)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step25" unique_id=1900108049]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step26")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step25" unique_id=477461784]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step25" unique_id=1460595501]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step26" type="RigidBody3D" parent="Level4/Node3D" unique_id=1851841525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -5.751503)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step26" unique_id=1652689150]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step27")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step26" unique_id=1270210394]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step26" unique_id=1497248698]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step27" type="RigidBody3D" parent="Level4/Node3D" unique_id=1574712798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -6.37637)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step27" unique_id=1254598407]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step28")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step27" unique_id=1258035386]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step27" unique_id=1176005137]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step28" type="RigidBody3D" parent="Level4/Node3D" unique_id=1001246463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -7.0211)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step28" unique_id=1490404892]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step29")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step28" unique_id=265645348]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step28" unique_id=252285349]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step29" type="RigidBody3D" parent="Level4/Node3D" unique_id=1824476399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -7.6852994)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step29" unique_id=1591295862]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../Step30")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step29" unique_id=1802528272]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step29" unique_id=1592388656]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="Step30" type="RigidBody3D" parent="Level4/Node3D" unique_id=1490293071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48434, 0.07369995, -7.6852994)
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="Level4/Node3D/Step30" unique_id=1611873500]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -0.2629652)
+node_a = NodePath("..")
+node_b = NodePath("../../StaticBody3D2")
+angular_limit/relaxation = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level4/Node3D/Step30" unique_id=2016388828]
+mesh = SubResource("BoxMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/Step30" unique_id=2004027072]
+shape = SubResource("BoxShape3D_1dani")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Level4/Node3D" unique_id=242002236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3806133, 0.21147156, -8.29761)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/StaticBody3D2" unique_id=2120087928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30786133, 0.23535156)
+shape = SubResource("BoxShape3D_27m30")
+
+[node name="Slide2" parent="." unique_id=91870074 instance=ExtResource("5_p0xdo")]
+transform = Transform3D(-8.871677, 0, -4.614471, 0, 10, 0, 4.614471, 0, -8.871677, 13.953722, -93.135925, -23.236494)

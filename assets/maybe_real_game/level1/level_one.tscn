@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://c2vjq323unor0"]
+
+[ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_ms1bg"]
+[ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="2_rgtrl"]
+[ext_resource type="PackedScene" uid="uid://ddssp2f7m7qfj" path="res://assets/maybe_real_game/pieces/table.tscn" id="3_rgtrl"]
+[ext_resource type="PackedScene" uid="uid://cp2ii6yqngcre" path="res://assets/maybe_real_game/pieces/chair.tscn" id="4_ui6yd"]
+[ext_resource type="PackedScene" uid="uid://cw0ja044o6y0c" path="res://assets/maybe_real_game/pieces/spiral_staircase.tscn" id="5_bhkry"]
+
+[sub_resource type="Environment" id="Environment_se57k"]
+ambient_light_color = Color(0.43519226, 0.4351923, 0.43519217, 1)
+ambient_light_energy = 2.59
+
+[node name="LevelOne" type="Node3D" unique_id=164788576]
+
+[node name="WallsAndFloor" type="CSGCombiner3D" parent="." unique_id=406111818]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="WallsAndFloor" unique_id=1507220573]
+radius = 20.0
+height = 12.0
+sides = 64
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="WallsAndFloor" unique_id=1725865321]
+operation = 2
+radius = 19.0
+height = 10.0
+sides = 64
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="WallsAndFloor" unique_id=1199378676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.894531, -5.31201, -1.0699437)
+operation = 2
+radius = 3.310461
+
+[node name="RigidBody3D" parent="." unique_id=255405108 node_paths=PackedStringArray("camera_controller") instance=ExtResource("1_ms1bg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141258, -4.3141437, -10.586887)
+camera_controller = NodePath("../CameraController")
+dent_str_scalar = 0.1
+sensitivity = 25.0
+
+[node name="CameraController" parent="." unique_id=287330889 node_paths=PackedStringArray("target") instance=ExtResource("2_rgtrl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141258, -4.3141437, -10.586887)
+target = NodePath("../RigidBody3D")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=585993335]
+environment = SubResource("Environment_se57k")
+
+[node name="Overhead" type="OmniLight3D" parent="." unique_id=498180127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.857551, 0)
+shadow_enabled = true
+omni_range = 30.0
+omni_attenuation = 0.4
+
+[node name="table" parent="." unique_id=940387441 instance=ExtResource("3_rgtrl")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.810925, -5.0686135, -13.697863)
+
+[node name="table2" parent="." unique_id=1455271096 instance=ExtResource("3_rgtrl")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -0.810925, -5.0686135, -8.350233)
+
+[node name="chair" parent="." unique_id=489370756 instance=ExtResource("4_ui6yd")]
+transform = Transform3D(-2.9999754, 0, -0.012115423, 0, 3, 0, 0.012115423, 0, -2.9999754, -1.3170513, -4.9986324, -6.1055984)
+
+[node name="chair2" parent="." unique_id=1609437024 instance=ExtResource("4_ui6yd")]
+transform = Transform3D(-2.9999754, 0, -0.012115423, 0, 3, 0, 0.012115423, 0, -2.9999754, 4.137472, -4.9986324, -6.1055984)
+
+[node name="SpiralStaircase" parent="." unique_id=1754790079 instance=ExtResource("5_bhkry")]
+transform = Transform3D(4.518999, 0, -3.9469793, 0, 6, 0, 3.9469793, 0, 4.518999, 25.028303, -16.975277, -1.6169243)

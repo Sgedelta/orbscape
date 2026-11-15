@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b0o8xesv64481"]
+
+[ext_resource type="PackedScene" uid="uid://cifkv2wtpjsml" path="res://assets/WipeoutSlammer.fbx" id="1_d5hio"]
+
+[node name="WipeoutSlammer" unique_id=1566824358 instance=ExtResource("1_d5hio")]
