@@ -4,6 +4,23 @@
 [ext_resource type="Script" uid="uid://cbf63ewricxbe" path="res://assets/maybe_real_game/menu.gd" id="1_q6qj2"]
 [ext_resource type="PackedScene" uid="uid://cbjmgbtbndhaq" path="res://assets/maybe_real_game/filter_display.tscn" id="2_quscv"]
 [ext_resource type="Texture2D" uid="uid://bwy1oby8cu2wd" path="res://assets/random_bs_go/OrbscapeButtonFrame.png" id="3_ii8mm"]
+[ext_resource type="PackedScene" uid="uid://cmm3laexqb7vv" path="res://assets/maybe_real_game/title_filter_display.tscn" id="3_lhs6i"]
+[ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="4_2yx1d"]
+[ext_resource type="Texture2D" uid="uid://b7e6sm50r3ivn" path="res://assets/palette_mono.png" id="5_2x3sg"]
+[ext_resource type="Texture2D" uid="uid://rqm7tbh40kcj" path="res://assets/dither_matrix.png" id="6_oq61m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_puq5g"]
+resource_local_to_scene = true
+shader = ExtResource("4_2yx1d")
+shader_parameter/u_dither_tex = ExtResource("6_oq61m")
+shader_parameter/u_color_tex = ExtResource("5_2x3sg")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 1.585
+shader_parameter/u_offset = -0.255
+shader_parameter/u_dither_size = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8an1d"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27m30"]
 texture = ExtResource("3_ii8mm")
@@ -45,8 +62,14 @@ grow_vertical = 2
 script = ExtResource("1_q6qj2")
 game_scene = ExtResource("2_quscv")
 
+[node name="TextureRect" parent="." unique_id=300592302 instance=ExtResource("3_lhs6i")]
+material = SubResource("ShaderMaterial_puq5g")
+layout_mode = 1
+texture = SubResource("ViewportTexture_8an1d")
+
 [node name="Title" type="Control" parent="." unique_id=1999999995]
 layout_mode = 1
+anchor_left = 0.5
 anchor_top = 0.15
 anchor_right = 1.0
 anchor_bottom = 0.3
@@ -55,8 +78,8 @@ anchor_bottom = 0.3
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.4
-anchor_right = 0.6
+anchor_left = 0.3
+anchor_right = 0.7
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -67,10 +90,10 @@ stretch_mode = 5
 
 [node name="Buttons" type="Control" parent="." unique_id=678644324]
 layout_mode = 1
-anchor_left = 0.35
+anchor_left = 0.6
 anchor_top = 0.5
-anchor_right = 0.65
-anchor_bottom = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Buttons" unique_id=1371729507]
 layout_mode = 1

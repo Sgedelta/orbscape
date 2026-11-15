@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://cbjmgbtbndhaq"]
 
 [ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="1_8sw32"]
-[ext_resource type="Texture2D" uid="uid://cd0uyvstgg2je" path="res://assets/palette_hollow.png" id="2_n4nl8"]
+[ext_resource type="Texture2D" uid="uid://b7e6sm50r3ivn" path="res://assets/palette_mono.png" id="2_g63gb"]
 [ext_resource type="Texture2D" uid="uid://rqm7tbh40kcj" path="res://assets/dither_matrix.png" id="3_wo5wd"]
 [ext_resource type="PackedScene" uid="uid://txdpuwhoj7ag" path="res://assets/maybe_real_game/GameTower.tscn" id="4_n4nl8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojcrw"]
 shader = ExtResource("1_8sw32")
 shader_parameter/u_dither_tex = ExtResource("3_wo5wd")
-shader_parameter/u_color_tex = ExtResource("2_n4nl8")
-shader_parameter/u_bit_depth = 44
-shader_parameter/u_contrast = 1.865
-shader_parameter/u_offset = -0.265
-shader_parameter/u_dither_size = 3
+shader_parameter/u_color_tex = ExtResource("2_g63gb")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 2.06
+shader_parameter/u_offset = -0.255
+shader_parameter/u_dither_size = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n4nl8"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
