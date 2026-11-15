@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dja08wbw7npgi"]
+
+[ext_resource type="Script" uid="uid://cvkbq2hjcyja8" path="res://assets/maybe_real_game/cutscene.gd" id="1_tc46l"]
+[ext_resource type="PackedScene" uid="uid://cbjmgbtbndhaq" path="res://assets/maybe_real_game/filter_display.tscn" id="2_5ul18"]
+[ext_resource type="Texture2D" uid="uid://de7kcn5ert675" path="res://icon.svg" id="3_ig078"]
+[ext_resource type="Texture2D" uid="uid://lbhmfe48ccyn" path="res://assets/random_bs_go/20261113_214406.jpg" id="4_wc610"]
+
+[node name="Cutscene" type="Control" unique_id=418505295]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_tc46l")
+game_scene = ExtResource("2_5ul18")
+images = Array[Texture2D]([ExtResource("3_ig078"), ExtResource("4_wc610")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=15330387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Picture" type="TextureRect" parent="." unique_id=1369256208]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5

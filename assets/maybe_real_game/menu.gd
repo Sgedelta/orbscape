@@ -1,6 +1,6 @@
 extends Control
 
-@export var game_scene : PackedScene;
+@export var intro_scene : PackedScene;
 @export_range(-180.0, 180.0, 0.1, "radians_as_degrees") var title_rotate_speed = deg_to_rad(33)
 
 @onready var title_rect : TextureRect = %TitleDisp
@@ -17,6 +17,5 @@ func _process(delta: float) -> void:
 	
 	pass
 
-
 func on_play():
-	get_tree().change_scene_to_packed(game_scene)
+	get_tree().change_scene_to_packed(intro_scene)

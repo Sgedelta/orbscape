@@ -42,6 +42,17 @@ transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Path3D/PathFollow3D/Camera3D" unique_id=152961717]
 transform = Transform3D(1, 0, 0, 0, 0.99121547, 0.13225637, 0, -0.13225637, 0.99121547, 0, 0, 0)
-light_energy = 5.43
+light_energy = 4.365
 spot_range = 22.828
-spot_angle = 40.53
+spot_angle = 52.51
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1720981309]
+layer = 20
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer" unique_id=1715857371]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

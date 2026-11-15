@@ -1,5 +1,7 @@
 extends Path3D
 
+signal cinematic_done
+
 @export var window: Node3D
 @export var follower: PathFollow3D
 @export var camera: Camera3D
@@ -23,5 +25,7 @@ func _ready() -> void:
 	follower.progress_ratio = 0.0
 	camera.position = Vector3.ZERO
 
-	create_tween().tween_property(follower, "progress_ratio", 1.0, duration) \
+	var tween = create_tween()
+	tween.tween_property(follower, "progress_ratio", 1.0, duration) \
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.finished.connect(func(): cinematic_done.emit())
