@@ -1,3 +1,4 @@
+class_name player
 extends RigidBody3D
 
 @export var camera_controller : Node3D;

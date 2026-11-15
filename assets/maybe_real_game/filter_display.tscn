@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cbjmgbtbndhaq"]
 
 [ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="1_8sw32"]
-[ext_resource type="PackedScene" uid="uid://ci4dsy07s7262" path="res://assets/maybe_real_game/test_level.tscn" id="1_pxcpi"]
 [ext_resource type="Texture2D" uid="uid://cd0uyvstgg2je" path="res://assets/palette_hollow.png" id="2_n4nl8"]
 [ext_resource type="Texture2D" uid="uid://rqm7tbh40kcj" path="res://assets/dither_matrix.png" id="3_wo5wd"]
+[ext_resource type="PackedScene" uid="uid://txdpuwhoj7ag" path="res://assets/maybe_real_game/GameTower.tscn" id="4_n4nl8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojcrw"]
 shader = ExtResource("1_8sw32")
@@ -37,4 +37,4 @@ handle_input_locally = false
 size = Vector2i(1080, 720)
 render_target_update_mode = 4
 
-[node name="TestLevel" parent="SubViewportContainer/SubViewport" unique_id=5879746 instance=ExtResource("1_pxcpi")]
+[node name="GameTower" parent="SubViewportContainer/SubViewport" unique_id=581105494 instance=ExtResource("4_n4nl8")]

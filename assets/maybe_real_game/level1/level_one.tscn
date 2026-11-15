@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://c2vjq323unor0"]
 
 [ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_ms1bg"]
+[ext_resource type="Texture2D" uid="uid://c4kmuust047b" path="res://assets/random_bs_go/david.png" id="2_bhkry"]
 [ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="2_rgtrl"]
 [ext_resource type="PackedScene" uid="uid://ddssp2f7m7qfj" path="res://assets/maybe_real_game/pieces/table.tscn" id="3_rgtrl"]
 [ext_resource type="PackedScene" uid="uid://cp2ii6yqngcre" path="res://assets/maybe_real_game/pieces/chair.tscn" id="4_ui6yd"]
 [ext_resource type="PackedScene" uid="uid://cw0ja044o6y0c" path="res://assets/maybe_real_game/pieces/spiral_staircase.tscn" id="5_bhkry"]
+[ext_resource type="PackedScene" uid="uid://nq7p7q62xc3t" path="res://assets/maybe_real_game/level1/enemy.tscn" id="7_hjewk"]
 
 [sub_resource type="Environment" id="Environment_se57k"]
 ambient_light_color = Color(0.43519226, 0.4351923, 0.43519217, 1)
@@ -33,9 +35,13 @@ radius = 3.310461
 
 [node name="RigidBody3D" parent="." unique_id=255405108 node_paths=PackedStringArray("camera_controller") instance=ExtResource("1_ms1bg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141258, -4.3141437, -10.586887)
+collision_layer = 2
 camera_controller = NodePath("../CameraController")
-dent_str_scalar = 0.1
+dent_str_scalar = 0.15
 sensitivity = 25.0
+jump_str = 2.0
+jump_count = 1
+ball_texture = ExtResource("2_bhkry")
 
 [node name="CameraController" parent="." unique_id=287330889 node_paths=PackedStringArray("target") instance=ExtResource("2_rgtrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141258, -4.3141437, -10.586887)
@@ -46,6 +52,7 @@ environment = SubResource("Environment_se57k")
 
 [node name="Overhead" type="OmniLight3D" parent="." unique_id=498180127]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.857551, 0)
+light_energy = 2.25
 shadow_enabled = true
 omni_range = 30.0
 omni_attenuation = 0.4
@@ -64,3 +71,6 @@ transform = Transform3D(-2.9999754, 0, -0.012115423, 0, 3, 0, 0.012115423, 0, -2
 
 [node name="SpiralStaircase" parent="." unique_id=1754790079 instance=ExtResource("5_bhkry")]
 transform = Transform3D(4.518999, 0, -3.9469793, 0, 6, 0, 3.9469793, 0, 4.518999, 25.028303, -16.975277, -1.6169243)
+
+[node name="Enemy" parent="." unique_id=301704104 instance=ExtResource("7_hjewk")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.7184975, 0)

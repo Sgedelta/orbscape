@@ -23,6 +23,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="Orbscape"
 
+[global_group]
+
+player="player"
+
 [input]
 
 forward={
