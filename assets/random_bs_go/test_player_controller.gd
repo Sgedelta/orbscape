@@ -5,9 +5,14 @@ extends RigidBody3D
 @export var force_falloff : Curve;
 @export var impulse_needed_to_deform = .5;
 @export var impulse_to_deform_str : Curve;
-@export var sensitivity = 1.0
 @export var sphere_size = .33;
 @export var dent_str_scalar = 1.0;
+
+@export var sensitivity = 1.0
+@export var jump_str = 5.0
+@export var jump_count = 1
+var used_jumps = 0;
+
 
 
 var max_impulse = .15;
@@ -20,6 +25,15 @@ var min_impulse = .01;
 var mdt = MeshDataTool.new()
 
 var accumulated_force = 0.0;
+var GROUNDED_ANGLE = deg_to_rad(15)
+var _on_ground_this_frame = false
+var COYOTE_TIME = .1
+var _time_since_ground = 10000
+var JUMP_REFRESH_BUFFER = .1
+var _time_since_jump = 0
+
+var grounded: bool:
+	get: return _time_since_ground <= COYOTE_TIME
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,11 +55,21 @@ func _physics_process(delta: float) -> void:
 	apply_torque( axis * accumulated_force)
 	
 	accumulated_force = 0
+	
+	if _on_ground_this_frame:
+		_time_since_ground = 0.0
+		if _time_since_jump >= JUMP_REFRESH_BUFFER:
+			used_jumps = jump_count
+	else:
+		_time_since_ground += delta
+	
+	if _time_since_jump < JUMP_REFRESH_BUFFER:
+		_time_since_jump += delta
+	
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	# calc deform
 	var deform_count = 0;
-	var deform_pos = Vector3();
-	var deform_str = Vector3();
 	
 	for i in range(state.get_contact_count()):
 		var pos = to_local(state.get_contact_local_position(i))
@@ -53,16 +77,23 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var hit_str = state.get_contact_impulse(i)
 		if hit_str.length_squared() > (impulse_needed_to_deform * impulse_needed_to_deform) :
 			#print("contact ", i, " ", pos, " str: ", normal*hit_str)
-			deform_pos = pos;
-			deform_str = normal * impulse_to_deform_str.sample(hit_str.length() - impulse_needed_to_deform)
+			var deform_pos = pos;
+			var deform_str = normal * impulse_to_deform_str.sample(hit_str.length() - impulse_needed_to_deform)
 			deform_count += 1
 			deform(deform_pos, deform_str)
 			
 	
 	if deform_count != 0:
-		deform_pos /= deform_count;
-		#deform(deform_pos, deform_str)
 		make_collision_shape()
+	
+	# grounded checks
+	_on_ground_this_frame = false
+	for i in range(state.get_contact_count()):
+		var normal = state.get_contact_local_normal(i)
+		var angle = normal.angle_to(Vector3.UP)
+		if angle < GROUNDED_ANGLE:
+			_on_ground_this_frame = true;
+	
 	pass
 
 func _input(event: InputEvent) -> void:
@@ -70,6 +101,10 @@ func _input(event: InputEvent) -> void:
 		accumulated_force += sensitivity;
 	elif event.is_action("backward"):
 		accumulated_force -= sensitivity;
+	elif event.is_action_pressed("jump") and used_jumps >= 1:
+		apply_central_impulse(Vector3.UP * jump_str)
+		used_jumps -= 1
+		_time_since_jump = 0
 
 func square_off():
 	var box = BoxMesh.new()

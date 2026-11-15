@@ -127,8 +127,9 @@ camera_controller = NodePath("../CameraController")
 subdivisions = 15
 force_falloff = SubResource("Curve_51tfg")
 impulse_to_deform_str = SubResource("Curve_leiga")
-sensitivity = 10.0
 dent_str_scalar = 0.75
+sensitivity = 10.0
+jump_count = 2
 
 [node name="Mesh" type="MeshInstance3D" parent="RigidBody3D" unique_id=1424761749]
 mesh = SubResource("ArrayMesh_4xiot")
