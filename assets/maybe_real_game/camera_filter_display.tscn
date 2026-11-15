@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://by05f05hflrey"]
+
+[ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="1_b2a6h"]
+[ext_resource type="Texture2D" uid="uid://b7e6sm50r3ivn" path="res://assets/palette_mono.png" id="2_oulb7"]
+[ext_resource type="Texture2D" uid="uid://rqm7tbh40kcj" path="res://assets/dither_matrix.png" id="3_m3p01"]
+[ext_resource type="PackedScene" uid="uid://ci4dsy07s7262" path="res://assets/maybe_real_game/test_level.tscn" id="4_b2a6h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojcrw"]
+resource_local_to_scene = true
+shader = ExtResource("1_b2a6h")
+shader_parameter/u_dither_tex = ExtResource("3_m3p01")
+shader_parameter/u_color_tex = ExtResource("2_oulb7")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 1.31
+shader_parameter/u_offset = -0.16
+shader_parameter/u_dither_size = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n4nl8"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[node name="TextureRect" type="TextureRect" unique_id=300592302]
+material = SubResource("ShaderMaterial_ojcrw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_n4nl8")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=156858114]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=302341405]
+handle_input_locally = false
+size = Vector2i(1080, 720)
+render_target_update_mode = 4
+
+[node name="TestLevel2" parent="SubViewportContainer/SubViewport" unique_id=5879746 instance=ExtResource("4_b2a6h")]

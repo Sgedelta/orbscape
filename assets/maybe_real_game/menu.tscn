@@ -6,14 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bwy1oby8cu2wd" path="res://assets/random_bs_go/OrbscapeButtonFrame.png" id="3_ii8mm"]
 [ext_resource type="PackedScene" uid="uid://cmm3laexqb7vv" path="res://assets/maybe_real_game/title_filter_display.tscn" id="3_lhs6i"]
 [ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="4_2yx1d"]
-[ext_resource type="Texture2D" uid="uid://b7e6sm50r3ivn" path="res://assets/palette_mono.png" id="5_2x3sg"]
+[ext_resource type="Texture2D" uid="uid://cd0uyvstgg2je" path="res://assets/palette_hollow.png" id="5_2yx1d"]
 [ext_resource type="Texture2D" uid="uid://rqm7tbh40kcj" path="res://assets/dither_matrix.png" id="6_oq61m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2yx1d"]
 resource_local_to_scene = true
 shader = ExtResource("4_2yx1d")
 shader_parameter/u_dither_tex = ExtResource("6_oq61m")
-shader_parameter/u_color_tex = ExtResource("5_2x3sg")
+shader_parameter/u_color_tex = ExtResource("5_2yx1d")
 shader_parameter/u_bit_depth = 32
 shader_parameter/u_contrast = 1.31
 shader_parameter/u_offset = -0.16
