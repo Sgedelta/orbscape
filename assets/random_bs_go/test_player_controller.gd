@@ -11,6 +11,7 @@ extends RigidBody3D
 @export var sensitivity = 1.0
 @export var jump_str = 5.0
 @export var jump_count = 1
+@export var ball_texture : Texture2D
 var used_jumps = 0;
 
 
@@ -40,6 +41,11 @@ func _ready() -> void:
 	engine_mesh.visible = false;
 	square_off()
 	#deform(Vector3(0, -.5, .5), Vector3(0, -1, 1))
+	
+	var mat := StandardMaterial3D.new()
+	mat.albedo_texture = ball_texture
+	mesh_instance.material_override = mat
+	
 	make_collision_shape()
 	pass # Replace with function body.
 
