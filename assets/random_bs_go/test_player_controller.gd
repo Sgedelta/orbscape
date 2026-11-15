@@ -6,16 +6,22 @@ extends RigidBody3D
 @export var impulse_to_deform_str : Curve;
 @export var sensitivity = 1.0
 @export var sphere_size = .33;
+@export var dent_str_scalar = 1.0;
+
+var max_impulse = .15;
+var min_impulse = .01;
 
 @onready var mesh_instance = $Mesh
 @onready var mesh = mesh_instance.mesh
 @onready var collider = $Collider
+@onready var engine_mesh = $EngineMesh
 var mdt = MeshDataTool.new()
 
 var accumulated_force = 0.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	engine_mesh.visible = false;
 	square_off()
 	#deform(Vector3(0, -.5, .5), Vector3(0, -1, 1))
 	make_collision_shape()
@@ -41,14 +47,16 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var normal = state.get_contact_local_normal(i) * global_basis
 		var hit_str = state.get_contact_impulse(i)
 		if hit_str.length_squared() > (impulse_needed_to_deform * impulse_needed_to_deform) :
-			print("contact ", i, " ", pos, " str: ", normal*hit_str)
-			deform_pos += pos;
-			deform_str += normal * impulse_to_deform_str.sample(hit_str.length() - impulse_needed_to_deform)
+			#print("contact ", i, " ", pos, " str: ", normal*hit_str)
+			deform_pos = pos;
+			deform_str = normal * impulse_to_deform_str.sample(hit_str.length() - impulse_needed_to_deform)
 			deform_count += 1
+			deform(deform_pos, deform_str)
+			
 	
 	if deform_count != 0:
 		deform_pos /= deform_count;
-		deform(deform_pos, deform_str)
+		#deform(deform_pos, deform_str)
 		make_collision_shape()
 	pass
 
@@ -75,10 +83,16 @@ func deform(localCoord : Vector3, deform_str : Vector3) :
 	
 	for i in range(mdt.get_vertex_count()):
 		var vert = mdt.get_vertex(i)
-		vert += deform_str * force_falloff.sample(vert.distance_to(localCoord))
+		var original_vert = vert
+		var impulse = deform_str * force_falloff.sample(vert.distance_to(localCoord))
+		impulse = impulse.normalized() *  clampf(impulse.length(), 0, max_impulse)
+		if(impulse.length_squared() < min_impulse * min_impulse):
+			continue;
+		vert += impulse * dent_str_scalar
+		
 		# force to be sphere, if we want to force to another shape we have to do math about it
 		if(vert.length() < sphere_size):
-			vert = vert.normalized() * sphere_size
+			vert = original_vert.normalized() * sphere_size
 		mdt.set_vertex(i, vert)
 	
 	# fix normals face by face
