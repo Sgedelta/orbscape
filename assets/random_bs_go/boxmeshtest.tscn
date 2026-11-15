@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://wkm87qi5t7ag" path="res://assets/random_bs_go/boxmeshtest.gdshader" id="1_nm71g"]
 [ext_resource type="Script" uid="uid://j3ernkib7hnm" path="res://assets/random_bs_go/camera.gd" id="3_5ehgo"]
 [ext_resource type="Texture2D" uid="uid://lbhmfe48ccyn" path="res://assets/random_bs_go/20261113_214406.jpg" id="4_morl2"]
+[ext_resource type="Script" uid="uid://dekqjye08wb2n" path="res://assets/random_bs_go/spot_light_3d.gd" id="5_imvjo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pc66v"]
 size = Vector3(50, 1, 50)
@@ -118,8 +119,8 @@ target = NodePath("../RigidBody3D")
 [node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1597819908]
 transform = Transform3D(1, 0, 0, 0, 0.9823746, 0.18692274, 0, -0.18692274, 0.9823746, 0, 2.3243318, 4)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=195123101]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.262168, 4.701, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=195123101 node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 10, 5, 0)
 light_energy = 5.768
 light_projector = ExtResource("4_morl2")
 shadow_enabled = true
@@ -127,3 +128,6 @@ spot_range = 15.0
 spot_attenuation = 0.0
 spot_angle = 10.25
 spot_angle_attenuation = 0.22531278
+script = ExtResource("5_imvjo")
+player = NodePath("../RigidBody3D")
+checkpoints = Array[Vector3]([Vector3(10, 5, 0), Vector3(0, 5, 0)])
