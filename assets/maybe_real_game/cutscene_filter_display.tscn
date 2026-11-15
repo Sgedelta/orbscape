@@ -13,7 +13,7 @@ shader_parameter/u_color_tex = ExtResource("2_ja5fp")
 shader_parameter/u_bit_depth = 32
 shader_parameter/u_contrast = 1.31
 shader_parameter/u_offset = -0.16
-shader_parameter/u_dither_size = 2
+shader_parameter/u_dither_size = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n4nl8"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")

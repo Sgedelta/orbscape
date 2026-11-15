@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cvkbq2hjcyja8" path="res://assets/maybe_real_game/cutscene.gd" id="1_tc46l"]
 [ext_resource type="PackedScene" uid="uid://cbjmgbtbndhaq" path="res://assets/maybe_real_game/filter_display.tscn" id="2_5ul18"]
-[ext_resource type="Texture2D" uid="uid://de7kcn5ert675" path="res://icon.svg" id="3_ig078"]
-[ext_resource type="Texture2D" uid="uid://lbhmfe48ccyn" path="res://assets/random_bs_go/20261113_214406.jpg" id="4_wc610"]
+[ext_resource type="Texture2D" uid="uid://cwx0iu7ad3ku6" path="res://assets/maybe_real_game/cutscene/happyeric.png" id="3_fk6ss"]
+[ext_resource type="Texture2D" uid="uid://d1vh3r7yd8gqc" path="res://assets/maybe_real_game/cutscene/davidjester.png" id="4_gjf6r"]
+[ext_resource type="Texture2D" uid="uid://dfk5rcloj3ot5" path="res://assets/maybe_real_game/cutscene/eric mad.png" id="5_38i8e"]
+[ext_resource type="Texture2D" uid="uid://k6tp8nva7ofy" path="res://assets/maybe_real_game/cutscene/eric point.png" id="6_ptw3n"]
+[ext_resource type="Texture2D" uid="uid://udpnyo2244vv" path="res://assets/davidjesterexplode.png" id="7_4pv5p"]
+[ext_resource type="Texture2D" uid="uid://eny1grrc01n6" path="res://assets/maybe_real_game/cutscene/davidcube.png" id="8_6tvj2"]
 
 [node name="Cutscene" type="Control" unique_id=418505295]
 layout_mode = 3
@@ -16,7 +20,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_tc46l")
 game_scene = ExtResource("2_5ul18")
-images = Array[Texture2D]([ExtResource("3_ig078"), ExtResource("4_wc610")])
+images = Array[Texture2D]([ExtResource("3_fk6ss"), ExtResource("4_gjf6r"), ExtResource("3_fk6ss"), ExtResource("5_38i8e"), ExtResource("6_ptw3n"), ExtResource("7_4pv5p"), ExtResource("8_6tvj2")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=15330387]
 layout_mode = 1
