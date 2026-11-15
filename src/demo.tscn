@@ -1,0 +1,279 @@
+[gd_scene load_steps=27 format=3 uid="uid://4kk4qidbesno"]
+
+[ext_resource type="Shader" uid="uid://dske138voidgj" path="res://shader/dither.gdshader" id="1"]
+[ext_resource type="PackedScene" path="res://src/control_slider.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://gh74sa4bpexv" path="res://assets/min.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dv3ekoowqxt57" path="res://assets/bayer16tile2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://bysji3nv8yk1h" path="res://assets/bayer4tile8.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://y0grug43hxq" path="res://assets/test.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://tuuxltrref88" path="res://assets/move.png" id="7"]
+[ext_resource type="Script" uid="uid://c1ftw862u0ijg" path="res://src/demo.gd" id="8"]
+[ext_resource type="Script" uid="uid://b6daiuybd7xfi" path="res://src/control_slider.gd" id="9"]
+[ext_resource type="Texture2D" uid="uid://xs1ohjmlwcx7" path="res://assets/palette_eeve.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://mx62nfnxir5i" path="res://assets/palette_moonlight.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://bspurmt0642b4" path="res://assets/palette_mono.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://dsup8dlcjfiak" path="res://assets/palette_hollow.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://bki48mmqpgnln" path="res://assets/palette_rising_sun.png" id="14"]
+[ext_resource type="Script" uid="uid://cte4jalives85" path="res://addons/sk_fly_camera/src/fly_camera.gd" id="14_jorft"]
+[ext_resource type="Texture2D" uid="uid://cyfpyhpqx7val" path="res://assets/bayer2tile16.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://cjy1p5uy2tj5b" path="res://assets/blue_noise.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://bxltbtkbjs2a4" path="res://assets/bayer8tile4.png" id="17"]
+[ext_resource type="Theme" uid="uid://bqrxjfhrcxff" path="res://radiogroup.tres" id="17_jorft"]
+
+[sub_resource type="ShaderMaterial" id="1"]
+shader = ExtResource("1")
+shader_parameter/u_dither_tex = ExtResource("4")
+shader_parameter/u_color_tex = ExtResource("11")
+shader_parameter/u_bit_depth = 32
+shader_parameter/u_contrast = 1.0
+shader_parameter/u_offset = 0.0
+shader_parameter/u_dither_size = 2
+
+[sub_resource type="PlaneMesh" id="2"]
+size = Vector2(25, 25)
+
+[sub_resource type="SphereMesh" id="3"]
+
+[sub_resource type="BoxMesh" id="4"]
+
+[sub_resource type="PrismMesh" id="5"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jorft"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_fqon7"]
+
+[node name="Demo" type="Node3D"]
+script = ExtResource("8")
+palettes = [ExtResource("12"), ExtResource("11"), ExtResource("10"), ExtResource("13"), ExtResource("14")]
+dither_patterns = [ExtResource("4"), ExtResource("17"), ExtResource("5"), ExtResource("15"), ExtResource("16")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Gradient" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6")
+expand_mode = 1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 7.33164, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("14_jorft")
+mouse_sensitivity = Vector2(1.5, 1.5)
+fly_speed = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52829, 6.27066)
+visible = false
+
+[node name="Primitives" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Plane" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103946, -0.0237961, -0.066411)
+mesh = SubResource("2")
+
+[node name="Sphere" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.742296, 2.33721, 1.39276)
+mesh = SubResource("3")
+
+[node name="Cube" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09066, 2.26568, 0.0691072)
+mesh = SubResource("4")
+
+[node name="Prism" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Primitives"]
+transform = Transform3D(0.895254, 0, 0.445557, 0, 1, 0, -0.445557, 0, 0.895254, 4.20599, 2.26568, 0.964667)
+mesh = SubResource("5")
+
+[node name="Controls" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Controls"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 854.0
+offset_top = 11.0
+offset_right = 894.0
+offset_bottom = 51.0
+
+[node name="TabContainer" type="TabContainer" parent="Controls/Control"]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 196.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+current_tab = 0
+
+[node name="Params" type="VBoxContainer" parent="Controls/Control/TabContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="BitDepth" parent="Controls/Control/TabContainer/Params" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="DitherSize" parent="Controls/Control/TabContainer/Params" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="Contrast" parent="Controls/Control/TabContainer/Params" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="Offset" parent="Controls/Control/TabContainer/Params" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="Palette" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9")
+
+[node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/Palette"]
+layout_mode = 2
+text = "Palette"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls/Control/TabContainer/Params/Palette"]
+layout_mode = 2
+theme = ExtResource("17_jorft")
+
+[node name="Checkbox" type="CheckBox" parent="Controls/Control/TabContainer/Params/Palette/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+button_group = SubResource("ButtonGroup_jorft")
+
+[node name="Checkbox2" type="CheckBox" parent="Controls/Control/TabContainer/Params/Palette/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_jorft")
+
+[node name="Checkbox3" type="CheckBox" parent="Controls/Control/TabContainer/Params/Palette/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_jorft")
+
+[node name="Checkbox4" type="CheckBox" parent="Controls/Control/TabContainer/Params/Palette/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_jorft")
+
+[node name="Checkbox5" type="CheckBox" parent="Controls/Control/TabContainer/Params/Palette/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_jorft")
+
+[node name="PalettePreview" type="TextureRect" parent="Controls/Control/TabContainer/Params"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator5" type="HSeparator" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="Dither" type="HBoxContainer" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("9")
+
+[node name="Label" type="Label" parent="Controls/Control/TabContainer/Params/Dither"]
+layout_mode = 2
+text = "Dither Pattern"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="HBoxContainer" parent="Controls/Control/TabContainer/Params/Dither"]
+layout_mode = 2
+theme = ExtResource("17_jorft")
+
+[node name="Dither1" type="CheckBox" parent="Controls/Control/TabContainer/Params/Dither/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+button_group = SubResource("ButtonGroup_fqon7")
+
+[node name="Dither2" type="CheckBox" parent="Controls/Control/TabContainer/Params/Dither/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_fqon7")
+
+[node name="Dither3" type="CheckBox" parent="Controls/Control/TabContainer/Params/Dither/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_fqon7")
+
+[node name="Dither4" type="CheckBox" parent="Controls/Control/TabContainer/Params/Dither/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_fqon7")
+
+[node name="Dither5" type="CheckBox" parent="Controls/Control/TabContainer/Params/Dither/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_group = SubResource("ButtonGroup_fqon7")
+
+[node name="DitherPreview" type="TextureRect" parent="Controls/Control/TabContainer/Params"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DitherLabel" type="Label" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/Control/TabContainer/Params"]
+layout_mode = 2
+text = "Camera:
+- right click to activate mouse control
+- shift to increase speed
+- ctrl to decrease speed
+- WASD to move"
+
+[node name="Minimise" type="Button" parent="Controls/Control"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = -1.0
+offset_right = 259.0
+offset_bottom = 21.0
+icon = ExtResource("3")
+
+[node name="Move" type="Button" parent="Controls/Control"]
+layout_mode = 0
+offset_left = 199.0
+offset_top = -1.0
+offset_right = 227.0
+offset_bottom = 21.0
+icon = ExtResource("7")
+
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Palette/HBoxContainer/Checkbox" to="." method="_on_Checkbox_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Palette/HBoxContainer/Checkbox2" to="." method="_on_Checkbox2_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Palette/HBoxContainer/Checkbox3" to="." method="_on_Checkbox3_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Palette/HBoxContainer/Checkbox4" to="." method="_on_Checkbox4_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Palette/HBoxContainer/Checkbox5" to="." method="_on_Checkbox5_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Dither/MarginContainer/Dither1" to="." method="_on_Dither1_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Dither/MarginContainer/Dither2" to="." method="_on_Dither2_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Dither/MarginContainer/Dither3" to="." method="_on_Dither3_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Dither/MarginContainer/Dither4" to="." method="_on_Dither4_pressed"]
+[connection signal="pressed" from="Controls/Control/TabContainer/Params/Dither/MarginContainer/Dither5" to="." method="_on_Dither5_pressed"]
+[connection signal="pressed" from="Controls/Control/Minimise" to="." method="_on_Minimise_pressed"]
+[connection signal="button_down" from="Controls/Control/Move" to="." method="_on_Move_button_down"]
+[connection signal="button_up" from="Controls/Control/Move" to="." method="_on_Move_button_up"]
