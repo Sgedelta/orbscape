@@ -4,15 +4,17 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8ge1m"]
 sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0.38199684, 0.00046041876, 0.47804677, 1)
-sky_curve = 0.20490597
+sky_horizon_color = Color(0.8120409, 0.13075209, 0.9999998, 1)
+sky_curve = 0.47075003
 
 [sub_resource type="Sky" id="Sky_cx3vu"]
 sky_material = SubResource("ProceduralSkyMaterial_8ge1m")
 
 [sub_resource type="Environment" id="Environment_27m30"]
 background_mode = 2
+background_energy_multiplier = 1.04
 sky = SubResource("Sky_cx3vu")
+ambient_light_source = 1
 
 [node name="TestLevel" type="Node3D" unique_id=5879746]
 
@@ -23,8 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1365929, -2.547308, -17.170
 transform = Transform3D(1, 0, 0, 0, 0.19175963, 0.9814419, 0, -0.9814419, 0.19175963, 0, 9.497283, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=566606706]
-transform = Transform3D(0.9945219, 0.053444684, 0.08983232, 0, 0.8594061, -0.51129353, -0.104528375, 0.50849265, 0.85469824, 18.609581, 7.0258064, 32.633816)
-fov = 50.5
+transform = Transform3D(0.99405634, 0.05319472, 0.09498581, 0, 0.8724956, -0.488622, -0.10886681, 0.4857178, 0.86730975, 20.547472, 14.323671, 33.80672)
+fov = 55.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54841263]
 environment = SubResource("Environment_27m30")
