@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://txdpuwhoj7ag"]
 
+[ext_resource type="Script" uid="uid://cb84pnq3mn52e" path="res://assets/maybe_real_game/GameRunner.gd" id="1_iqe8c"]
 [ext_resource type="PackedScene" uid="uid://c2vjq323unor0" path="res://assets/maybe_real_game/level1/level_one.tscn" id="1_ofbpu"]
 [ext_resource type="PackedScene" uid="uid://cw0ja044o6y0c" path="res://assets/maybe_real_game/pieces/spiral_staircase.tscn" id="2_1dani"]
 [ext_resource type="PackedScene" uid="uid://nq7p7q62xc3t" path="res://assets/maybe_real_game/level1/enemy.tscn" id="2_3vq08"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddssp2f7m7qfj" path="res://assets/maybe_real_game/pieces/table.tscn" id="3_dcasu"]
 [ext_resource type="PackedScene" uid="uid://d3oscy43qpn6j" path="res://assets/maybe_real_game/pieces/candelabra.tscn" id="4_iqe8c"]
 [ext_resource type="PackedScene" uid="uid://dqwykaxnct045" path="res://assets/maybe_real_game/pieces/Slide.tscn" id="5_p0xdo"]
+[ext_resource type="AudioStream" uid="uid://5nbkx1kjlb57" path="res://assets/maybe_real_game/The Chords - Sh Boom.mp3" id="10_1var7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p0xdo"]
 bounce = 0.5
@@ -74,7 +76,35 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxShape3D" id="BoxShape3D_blw3t"]
 size = Vector3(50, 1, 50)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cx3vu"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ge1m"]
+size = Vector3(200, 30, 200)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q0gc3"]
+bounce = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1var7"]
+albedo_color = Color(2.055, 2.055, 2.055, 1)
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_27m30"]
+radius = 0.75
+height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1var7"]
+radius = 0.75
+
+[sub_resource type="Gradient" id="Gradient_1var7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1var7"]
+gradient = SubResource("Gradient_1var7")
+
 [node name="GameTower" type="Node3D" unique_id=581105494]
+script = ExtResource("1_iqe8c")
 
 [node name="LevelOne" parent="." unique_id=164788576 instance=ExtResource("1_ofbpu")]
 
@@ -892,3 +922,281 @@ mesh = SubResource("BoxMesh_cx3vu")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="End/StaticBody3D" unique_id=320231617]
 transform = Transform3D(0.8660253, 0.2545839, -0.43033367, -2.107342e-08, 0.86066735, 0.5091675, 0.5, -0.44095197, 0.7453599, -30.901836, 9.964569, 32.36824)
 shape = SubResource("BoxShape3D_blw3t")
+
+[node name="EndingArea" type="Area3D" parent="End" unique_id=397488145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6035633, 16.222076, -17.429808)
+collision_mask = 16777215
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndingArea" unique_id=1490102807]
+shape = SubResource("BoxShape3D_cx3vu")
+
+[node name="EndSong" type="AudioStreamPlayer" parent="End" unique_id=833548508]
+unique_name_in_owner = true
+stream = ExtResource("10_1var7")
+
+[node name="Area3D" type="Area3D" parent="End" unique_id=196689100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -27.836205, -25.637062)
+gravity_space_override = 3
+gravity = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/Area3D" unique_id=1931316687]
+shape = SubResource("BoxShape3D_8ge1m")
+
+[node name="EndOrb" type="RigidBody3D" parent="End" unique_id=2018773095 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.164116, -16.149681, -63.12537)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb" unique_id=539293364]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb" unique_id=1715935502]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb" unique_id=1480600318]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb2" type="RigidBody3D" parent="End" unique_id=1573403565 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.33126, -16.149681, -43.995804)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb2" unique_id=138047895]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb2" unique_id=1208275764]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb2" unique_id=924867783]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb3" type="RigidBody3D" parent="End" unique_id=1437811967 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.118973, -16.149681, -34.131508)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb3" unique_id=921242720]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb3" unique_id=1964060301]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb3" unique_id=23406793]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb4" type="RigidBody3D" parent="End" unique_id=35714715 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.58345, -16.149681, -20.382977)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb4" unique_id=1984235266]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb4" unique_id=1141960176]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb4" unique_id=520536905]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb5" type="RigidBody3D" parent="End" unique_id=662701185 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6732635, -16.149681, -47.582836)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb5" unique_id=1909538695]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb5" unique_id=1337496369]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb5" unique_id=526424576]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb6" type="RigidBody3D" parent="End" unique_id=602769669 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.763317, -16.149681, -54.188282)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb6" unique_id=1615132866]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb6" unique_id=247306445]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb6" unique_id=865178900]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb7" type="RigidBody3D" parent="End" unique_id=98948803 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.76767, -16.149681, -40.911266)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb7" unique_id=1328408448]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb7" unique_id=591179452]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb7" unique_id=710449028]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb8" type="RigidBody3D" parent="End" unique_id=554662726 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.53701, -5.758751, -44.131275)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb8" unique_id=313350385]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb8" unique_id=200598698]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb8" unique_id=851644720]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb9" type="RigidBody3D" parent="End" unique_id=2060712697 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.33938, -5.758751, -33.2201)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb9" unique_id=2128929421]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb9" unique_id=220178646]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb9" unique_id=71209617]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb10" type="RigidBody3D" parent="End" unique_id=304106528 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.108112, -5.758751, -59.495365)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb10" unique_id=1536455777]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb10" unique_id=1682753526]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb10" unique_id=893345152]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb11" type="RigidBody3D" parent="End" unique_id=1731673871 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.150475, -5.758751, -41.709957)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb11" unique_id=1736164520]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb11" unique_id=1703648349]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb11" unique_id=1876670252]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb12" type="RigidBody3D" parent="End" unique_id=1792863422 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.035683, -5.758751, -70.70236)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb12" unique_id=350392680]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb12" unique_id=241620555]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb12" unique_id=1064890547]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="EndOrb13" type="RigidBody3D" parent="End" unique_id=1087304370 groups=["end_orbs"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.035683, -5.758751, -70.70236)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_q0gc3")
+freeze = true
+linear_velocity = Vector3(0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End/EndOrb13" unique_id=1839056229]
+material_override = SubResource("StandardMaterial3D_1var7")
+mesh = SubResource("SphereMesh_27m30")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End/EndOrb13" unique_id=81887102]
+shape = SubResource("SphereShape3D_1var7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End/EndOrb13" unique_id=1347522683]
+light_energy = 3.0
+omni_range = 30.0
+omni_attenuation = 0.75
+
+[node name="Blackout" type="TextureRect" parent="End" unique_id=389741728]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1var7")
+
+[connection signal="body_exited" from="End/EndingArea" to="." method="_on_ending_area_body_exited"]
