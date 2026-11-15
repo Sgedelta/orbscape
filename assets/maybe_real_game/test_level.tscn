@@ -21,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1365929, -2.547308, -17.170
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1054873557]
 transform = Transform3D(1, 0, 0, 0, 0.19175963, 0.9814419, 0, -0.9814419, 0.19175963, 0, 9.497283, 0)
+sky_mode = 1
 
 [node name="window+marker" type="Node3D" parent="." unique_id=162931347]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4178493, 55.46158, -15.810152)
@@ -38,3 +39,9 @@ duration = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D" unique_id=521652532]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Path3D/PathFollow3D/Camera3D" unique_id=152961717]
+transform = Transform3D(1, 0, 0, 0, 0.99121547, 0.13225637, 0, -0.13225637, 0.99121547, 0, 0, 0)
+light_energy = 5.43
+spot_range = 22.828
+spot_angle = 40.53
