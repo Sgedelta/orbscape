@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://cy5ktqnfhaylk"]
+
+[ext_resource type="Script" uid="uid://bm6vaqpsdfbyp" path="res://assets/random_bs_go/orb_2.gd" id="1_5ehgo"]
+[ext_resource type="Shader" uid="uid://wkm87qi5t7ag" path="res://assets/random_bs_go/boxmeshtest.gdshader" id="1_nm71g"]
+[ext_resource type="Script" uid="uid://j3ernkib7hnm" path="res://assets/random_bs_go/camera.gd" id="3_5ehgo"]
+[ext_resource type="Texture2D" uid="uid://lbhmfe48ccyn" path="res://assets/random_bs_go/20261113_214406.jpg" id="4_morl2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pc66v"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pc66v"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pc66v"]
+
+[sub_resource type="Shader" id="Shader_v7qvi"]
+code = "
+shader_type spatial;
+
+uniform float morph : hint_range(0.0, 1.0) = 0.0;
+uniform float half_size = 0.5;
+
+vec3 cube_to_sphere(vec3 p) {
+	vec3 p2 = p * p;
+	return vec3(
+		p.x * sqrt(1.0 - p2.y * 0.5 - p2.z * 0.5 + p2.y * p2.z / 3.0),
+		p.y * sqrt(1.0 - p2.z * 0.5 - p2.x * 0.5 + p2.z * p2.x / 3.0),
+		p.z * sqrt(1.0 - p2.x * 0.5 - p2.y * 0.5 + p2.x * p2.y / 3.0)
+	);
+}
+
+void vertex() {
+	vec3 unit = VERTEX / half_size;
+	vec3 sphere_pos = cube_to_sphere(unit) * half_size;
+	VERTEX = mix(VERTEX, sphere_pos, morph);
+	NORMAL = normalize(mix(NORMAL, normalize(sphere_pos), morph));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm71g"]
+render_priority = 0
+shader = SubResource("Shader_v7qvi")
+shader_parameter/morph = 0.0
+shader_parameter/half_size = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7qvi"]
+render_priority = 0
+shader = ExtResource("1_nm71g")
+shader_parameter/morph = 0.0
+shader_parameter/half_size = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rj7q"]
+material = SubResource("ShaderMaterial_v7qvi")
+subdivide_width = 24
+subdivide_height = 24
+subdivide_depth = 24
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ehgo"]
+
+[node name="Boxmeshtest" type="Node3D" unique_id=886188279]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1513086221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=634441116]
+shape = SubResource("BoxShape3D_pc66v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1502083497]
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D" unique_id=149737451]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 25, 25)
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="StaticBody3D" unique_id=528612261]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 25, -25)
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="StaticBody3D" unique_id=11530124]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 25, 25, 0)
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="StaticBody3D" unique_id=2019057104]
+transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, -25, 25, 0)
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="StaticBody3D" unique_id=1574008961]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+mesh = SubResource("BoxMesh_pc66v")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1394455528]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.683813, 4.318819, 4.1897154)
+shadow_enabled = true
+area_range = 4096.0
+area_attenuation = 0.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1547295741 node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+physics_material_override = SubResource("PhysicsMaterial_pc66v")
+linear_damp_mode = 1
+linear_damp = 0.1
+angular_damp_mode = 1
+angular_damp = 1.0
+script = ExtResource("1_5ehgo")
+camera = NodePath("../Node3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=187023510]
+material_override = SubResource("ShaderMaterial_nm71g")
+mesh = SubResource("BoxMesh_4rj7q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=917012325]
+shape = SubResource("BoxShape3D_5ehgo")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1715342110 node_paths=PackedStringArray("target")]
+script = ExtResource("3_5ehgo")
+target = NodePath("../RigidBody3D")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=1597819908]
+transform = Transform3D(1, 0, 0, 0, 0.9823746, 0.18692274, 0, -0.18692274, 0.9823746, 0, 2.3243318, 4)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=195123101]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.262168, 4.701, 0)
+light_energy = 5.768
+light_projector = ExtResource("4_morl2")
+shadow_enabled = true
+spot_range = 15.0
+spot_attenuation = 0.0
+spot_angle = 10.25
+spot_angle_attenuation = 0.22531278
