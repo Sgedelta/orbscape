@@ -16,7 +16,8 @@ extends RigidBody3D
 var used_jumps = 0;
 
 
-
+var alive = true;
+@onready var start_pos = global_position
 var max_impulse = .15;
 var min_impulse = .01;
 
@@ -56,6 +57,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if(not alive):
+		return;
+	
 	var fwd := -camera_controller.global_basis.z
 	var axis := Vector3.UP.cross(fwd)
 	
@@ -175,3 +179,12 @@ func deform(localCoord : Vector3, deform_str : Vector3) :
 func make_collision_shape() :
 	
 	collider.shape = mesh.create_convex_shape(true, false)
+
+
+func reset_self_for_endgame():
+	alive = false
+	global_position = start_pos
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	reset_physics_interpolation()
+	square_off()

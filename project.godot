@@ -27,6 +27,7 @@ project/assembly_name="Orbscape"
 [global_group]
 
 player="player"
+end_orbs=""
 
 [input]
 
