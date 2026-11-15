@@ -119,14 +119,17 @@ func square_off():
 	box.subdivide_height = subdivisions
 	box.subdivide_width = subdivisions
 	
+	mesh.clear_surfaces()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, box.get_mesh_arrays())
 	
-	
+	mdt = MeshDataTool.new()
+	mdt.create_from_surface(mesh, 0)
+	mdt.commit_to_surface(mesh)
 	
 	pass
 
 func deform(localCoord : Vector3, deform_str : Vector3) :
-	mdt.create_from_surface(mesh_instance.mesh, 0)
+	mdt.create_from_surface(mesh, 0)
 	
 	for i in range(mdt.get_vertex_count()):
 		var vert = mdt.get_vertex(i)
@@ -164,8 +167,8 @@ func deform(localCoord : Vector3, deform_str : Vector3) :
 		mdt.set_vertex_normal(i, mdt.get_vertex_normal(i).normalized())
 	
 	
-	mesh_instance.mesh.clear_surfaces()
-	mdt.commit_to_surface(mesh_instance.mesh)
+	mesh.clear_surfaces()
+	mdt.commit_to_surface(mesh)
 	pass
 
 

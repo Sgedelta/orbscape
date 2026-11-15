@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b6sbclxveoify"]
+
+[ext_resource type="Texture2D" uid="uid://dwu6tgilhfaeu" path="res://assets/random_bs_go/Orbscape Title.png" id="1_j0i0m"]
+[ext_resource type="Script" uid="uid://cbf63ewricxbe" path="res://assets/maybe_real_game/menu.gd" id="1_q6qj2"]
+[ext_resource type="PackedScene" uid="uid://cbjmgbtbndhaq" path="res://assets/maybe_real_game/filter_display.tscn" id="2_quscv"]
+[ext_resource type="Texture2D" uid="uid://bwy1oby8cu2wd" path="res://assets/random_bs_go/OrbscapeButtonFrame.png" id="3_ii8mm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27m30"]
+texture = ExtResource("3_ii8mm")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ii8mm"]
+texture = ExtResource("3_ii8mm")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+modulate_color = Color(0.8819366, 0.8819366, 0.88193643, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_quscv"]
+texture = ExtResource("3_ii8mm")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+modulate_color = Color(1.6852883, 1.6852883, 1.6852883, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhs6i"]
+texture = ExtResource("3_ii8mm")
+texture_margin_left = 25.0
+texture_margin_top = 15.0
+texture_margin_right = 25.0
+texture_margin_bottom = 15.0
+
+[node name="Menu" type="Control" unique_id=1051601557]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q6qj2")
+game_scene = ExtResource("2_quscv")
+
+[node name="Title" type="Control" parent="." unique_id=1999999995]
+layout_mode = 1
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.3
+
+[node name="TitleDisp" type="TextureRect" parent="Title" unique_id=1093757790]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_j0i0m")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Buttons" type="Control" parent="." unique_id=678644324]
+layout_mode = 1
+anchor_left = 0.35
+anchor_top = 0.5
+anchor_right = 0.65
+anchor_bottom = 0.7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons" unique_id=1371729507]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_right = 100.0
+
+[node name="Button" type="Button" parent="Buttons/VBoxContainer" unique_id=1488156039]
+texture_filter = 1
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_27m30")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ii8mm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_quscv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_lhs6i")
+theme_override_styles/focus = SubResource("StyleBoxTexture_quscv")
+text = "Orb Yourself!"
+
+[connection signal="pressed" from="Buttons/VBoxContainer/Button" to="." method="on_play"]

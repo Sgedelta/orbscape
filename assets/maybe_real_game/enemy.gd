@@ -60,4 +60,6 @@ func _on_caught() -> void:
 
 	light_color = Color.RED
 	
+	player_instance.square_off()
 	get_tree().reload_current_scene()
+	
