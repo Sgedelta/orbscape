@@ -1,6 +1,7 @@
 extends SpotLight3D
 
 @export var checkpoints: Array[Vector3]
+@export var rotation_checkpoints: Array[Vector3]
 @export var speed := 3.0
 
 var player_radius := 0.5
@@ -18,8 +19,13 @@ func _physics_process(delta: float) -> void:
 
 func _patrol(delta: float) -> void:
 	var goal : Vector3 = checkpoints[_target]
-	global_position = global_position.move_toward(goal, speed * delta)
-	if global_position.distance_to(goal) < 0.05:
+	var rot_goal : Vector3 = rotation_checkpoints[_target]
+	var rot_speed = rot_goal.distance_to(rotation_checkpoints[_target - 1]) / (max(goal.distance_to(checkpoints[_target-1]), .01) / speed)
+	
+	position = position.move_toward(goal, speed * delta)
+	rotation = rotation.move_toward(rot_goal, rot_speed * delta)
+	
+	if position.distance_to(goal) < 0.05:
 		_target = (_target + 1) % checkpoints.size()
 
 func _is_player_lit() -> bool:
@@ -40,7 +46,6 @@ func _is_player_lit() -> bool:
 		0xFFFFFFFF - 2)
 	#query.exclude = [player.get_rid()]
 	var hit := space_state.intersect_ray(query)
-	print(hit)
 	return space_state.intersect_ray(query).is_empty()
 
 func _on_caught() -> void:

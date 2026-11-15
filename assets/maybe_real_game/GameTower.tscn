@@ -2,8 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://c2vjq323unor0" path="res://assets/maybe_real_game/level1/level_one.tscn" id="1_ofbpu"]
 [ext_resource type="PackedScene" uid="uid://cw0ja044o6y0c" path="res://assets/maybe_real_game/pieces/spiral_staircase.tscn" id="2_1dani"]
+[ext_resource type="PackedScene" uid="uid://nq7p7q62xc3t" path="res://assets/maybe_real_game/level1/enemy.tscn" id="2_3vq08"]
 [ext_resource type="Script" uid="uid://dqq5ay35pfepp" path="res://assets/maybe_real_game/spinny.gd" id="2_eqirj"]
 [ext_resource type="PackedScene" uid="uid://b0o8xesv64481" path="res://assets/maybe_real_game/pieces/wipeout_slammer.tscn" id="2_ojdvh"]
+[ext_resource type="PackedScene" uid="uid://ddssp2f7m7qfj" path="res://assets/maybe_real_game/pieces/table.tscn" id="3_dcasu"]
+[ext_resource type="PackedScene" uid="uid://d3oscy43qpn6j" path="res://assets/maybe_real_game/pieces/candelabra.tscn" id="4_iqe8c"]
 [ext_resource type="PackedScene" uid="uid://dqwykaxnct045" path="res://assets/maybe_real_game/pieces/Slide.tscn" id="5_p0xdo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p0xdo"]
@@ -76,9 +79,38 @@ omni_range = 30.0
 omni_attenuation = 0.4
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Level2" unique_id=1057615024]
-transform = Transform3D(0.8660254, -2.1855694e-08, 0.5, -0.5, -3.7855173e-08, 0.8660254, 0, -1, -4.371139e-08, -15.418407, -0.33530426, 0)
+transform = Transform3D(0.8660254, -2.1855694e-08, 0.5, -0.5, -3.7855173e-08, 0.8660254, 0, -1, -4.371139e-08, -15.418407, -1.4743452, -0.7849592)
 light_energy = 4.679
 spot_range = 8.81285
+
+[node name="Enemy" parent="Level2" unique_id=301704104 instance=ExtResource("2_3vq08")]
+transform = Transform3D(-0.7734588, 0.50250345, 0.38633132, 0.3255825, -0.20797937, 0.92235607, 0.543836, 0.8391871, -0.0027428716, 4.714674, 2.125124, 2.5691853)
+checkpoints = Array[Vector3]([Vector3(0, 3.1384668, -6.8305163), Vector3(-6.622447, 3.1384668, 9.736153), Vector3(4.714674, 2.125124, 2.5691853)])
+rotation_checkpoints = Array[Vector3]([Vector3(-1.3476129, 0, 0), Vector3(-1.3601213, 0.032231007, 3.1415927), Vector3(-1.1741352, 1.577896, 2.1392517)])
+
+[node name="table" parent="Level2" unique_id=940387441 instance=ExtResource("3_dcasu")]
+transform = Transform3D(-0.43369827, 0, -5.984305, 0, 6, 0, 5.984305, 0, -0.43369827, -17.340204, -5.095111, -2.5318804)
+
+[node name="table2" parent="Level2" unique_id=1461098009 instance=ExtResource("3_dcasu")]
+transform = Transform3D(-5.9979973, 0, -0.15500456, 0, 6, 0, 0.15500456, 0, -5.9979973, 2.5225472, -5.095111, 12.001331)
+
+[node name="CandelabraTakeTwo" parent="Level2" unique_id=1093326846 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 6.5198383, -4.956773, 15.969468)
+
+[node name="CandelabraTakeTwo2" parent="Level2" unique_id=1461447072 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 2.7189355, -4.956773, -12.62801)
+
+[node name="CandelabraTakeTwo3" parent="Level2" unique_id=396168801 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, -6.3367076, -4.956773, -1.3118124)
+
+[node name="CandelabraTakeTwo6" parent="Level2" unique_id=1307971113 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.2446455, 0.09713719, 0.36252093, -0.37092808, 0.12707166, 1.2394614, 0.057178218, -1.290123, 0.14937702, -9.059095, -4.3502903, 6.586684)
+
+[node name="CandelabraTakeTwo5" parent="Level2" unique_id=1854033232 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 5.2853055, -4.956773, -2.2778225)
+
+[node name="CandelabraTakeTwo4" parent="Level2" unique_id=1364394976 instance=ExtResource("4_iqe8c")]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 6.7172284, -4.956773, 9.822818)
 
 [node name="Level3" type="Node3D" parent="." unique_id=874359485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.992306, 0)
@@ -126,6 +158,10 @@ size = Vector3(3.665062, 4.006836, 11.008289)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.622127, -3.450714, 1.8717575)
 size = Vector3(18.410282, 4.006836, 3.273436)
 
+[node name="CSGBox3D9" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=1722584176]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.0548959, -2.0273895, 1.9130731)
+size = Vector3(4.7328196, 6.853485, 0.37597585)
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="Level3/WallsAndFloor" unique_id=464859922]
 transform = Transform3D(1, 0, 0, 0, 0.93779546, -0.34718817, 0, 0.34718817, 0.93779546, 12.02903, -2.8878784, -13.283279)
 size = Vector3(4.8120346, 0.7838135, 14.684854)
@@ -146,7 +182,7 @@ omni_attenuation = 0.4
 transform = Transform3D(4.1540194, 0, -4.329448, 0, 6.000001, 0, 4.329448, 0, 4.1540194, 28.724586, -16.872837, 6.3654046)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level3" unique_id=73078331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.436258, -4.0497017, -10.4876995)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -6.134927, -3.920578, -10.4876995)
 physics_material_override = SubResource("PhysicsMaterial_p0xdo")
 script = ExtResource("2_eqirj")
 speed = 2.0943951023931953
@@ -180,6 +216,13 @@ shape = SubResource("ConvexPolygonShape3D_p0xdo")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Level3/StaticBody3D2" unique_id=1210853047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.0058537, 0)
 mesh = SubResource("CylinderMesh_cx3vu")
+
+[node name="Enemy" parent="Level3" unique_id=1717401248 instance=ExtResource("2_3vq08")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.695341, -3.4878025, 15.940433)
+spot_range = 7.8602304
+spot_angle = 13.286272
+checkpoints = Array[Vector3]([Vector3(-3.695341, -3.4878025, -8.754504), Vector3(-3.695341, -3.4878025, 15.940433)])
+rotation_checkpoints = Array[Vector3]([Vector3(0, -1.5707964, 0), Vector3(0, -1.5707964, 0)])
 
 [node name="Level4" type="Node3D" parent="." unique_id=281384098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -34.41616, 0)
@@ -226,7 +269,7 @@ size = Vector3(0.14465332, 6.348011, 1)
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Level4/WallsAndFloor" unique_id=1056031090]
 transform = Transform3D(0.043888133, -0.62035674, -0.78309083, 0, 0.78384626, -0.6209551, 0.99903655, 0.027252562, 0.034401547, 0, -3.6584778, -15.506856)
 operation = 2
-radius = 0.55
+radius = 0.475
 height = 16.852417
 sides = 32
 
@@ -709,6 +752,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3806133, 0.21147156, -8.29
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level4/Node3D/StaticBody3D2" unique_id=2120087928]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.30786133, 0.23535156)
 shape = SubResource("BoxShape3D_27m30")
+
+[node name="Enemy" parent="Level4" unique_id=1737557655 instance=ExtResource("2_3vq08")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.7967253, 3.9803925, -2.395452)
+spot_angle = 17.69475
+checkpoints = Array[Vector3]([Vector3(4.7967253, 3.9803925, -2.395452), Vector3(4.7967253, 3.9803925, 14.786877), Vector3(-5.06, 3.5, 14.787), Vector3(-12.286, 3.5, 1.276), Vector3(-13.969239, 3.9803925, -2.395452)])
+rotation_checkpoints = Array[Vector3]([Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0, 0), Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(-1.5707964, 0, 0)])
+
+[node name="Enemy2" parent="Level4" unique_id=275745663 instance=ExtResource("2_3vq08")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.06, 3.5, 14.787)
+spot_angle = 17.69475
+checkpoints = Array[Vector3]([Vector3(-5.06, 3.5, 14.787), Vector3(-12.286, 3.5, 1.276), Vector3(-13.969239, 3.9803925, -2.395452), Vector3(4.7967253, 3.9803925, -2.395452), Vector3(4.7967253, 3.9803925, 14.786877)])
+rotation_checkpoints = Array[Vector3]([Vector3(0, 1.5707964, 0), Vector3(0, 1.5707964, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0, 0), Vector3(-1.5707964, 0, 0)])
 
 [node name="Slide2" parent="." unique_id=91870074 instance=ExtResource("5_p0xdo")]
 transform = Transform3D(-8.871677, 0, -4.614471, 0, 10, 0, 4.614471, 0, -8.871677, 13.953722, -93.135925, -23.236494)

@@ -39,7 +39,7 @@ collision_layer = 2
 camera_controller = NodePath("../CameraController")
 dent_str_scalar = 0.15
 sensitivity = 25.0
-jump_str = 2.0
+jump_str = 3.5
 jump_count = 1
 ball_texture = ExtResource("2_bhkry")
 
@@ -73,4 +73,6 @@ transform = Transform3D(-2.9999754, 0, -0.012115423, 0, 3, 0, 0.012115423, 0, -2
 transform = Transform3D(4.518999, 0, -3.9469793, 0, 6, 0, 3.9469793, 0, 4.518999, 25.028303, -16.975277, -1.6169243)
 
 [node name="Enemy" parent="." unique_id=301704104 instance=ExtResource("7_hjewk")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.7184975, 0)
+transform = Transform3D(1, 0, 0, 0, 0.34439835, 0.9388236, 0, -0.9388236, 0.34439835, 0, 3.7184975, -2.6286993)
+spot_angle = 40.0
+rotation_checkpoints = Array[Vector3]([Vector3(-1.2191985, 0, 0)])

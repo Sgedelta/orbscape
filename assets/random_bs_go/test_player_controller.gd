@@ -27,7 +27,7 @@ var min_impulse = .01;
 var mdt = MeshDataTool.new()
 
 var accumulated_force = 0.0;
-var GROUNDED_ANGLE = deg_to_rad(15)
+var GROUNDED_ANGLE = deg_to_rad(30)
 var _on_ground_this_frame = false
 var COYOTE_TIME = .1
 var _time_since_ground = 10000
