@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2vjq323unor0"]
 
 [ext_resource type="PackedScene" uid="uid://boxfuc4fv5cse" path="res://assets/maybe_real_game/player.tscn" id="1_ms1bg"]
-[ext_resource type="Texture2D" uid="uid://c4kmuust047b" path="res://assets/random_bs_go/david.png" id="2_bhkry"]
+[ext_resource type="Texture2D" uid="uid://crnxk08hj8utw" path="res://assets/maybe_real_game/level1/david.png" id="2_hjewk"]
 [ext_resource type="PackedScene" uid="uid://cygpirow5nb8c" path="res://assets/random_bs_go/camera_controller.tscn" id="2_rgtrl"]
 [ext_resource type="PackedScene" uid="uid://ddssp2f7m7qfj" path="res://assets/maybe_real_game/pieces/table.tscn" id="3_rgtrl"]
 [ext_resource type="PackedScene" uid="uid://cp2ii6yqngcre" path="res://assets/maybe_real_game/pieces/chair.tscn" id="4_ui6yd"]
@@ -41,7 +41,7 @@ dent_str_scalar = 0.15
 sensitivity = 25.0
 jump_str = 3.5
 jump_count = 1
-ball_texture = ExtResource("2_bhkry")
+ball_texture = ExtResource("2_hjewk")
 
 [node name="CameraController" parent="." unique_id=287330889 node_paths=PackedStringArray("target") instance=ExtResource("2_rgtrl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.141258, -4.3141437, -10.586887)
